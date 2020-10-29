@@ -1,7 +1,9 @@
 <template>
     <div>
         <p>Rechnungsgenerator</p>
-        <editor ref="editor" :config="config" :initialized="onInitialized" />
+        <div>
+            <editor ref="editor" :config="config" :initialized="onInitialized" />
+        </div>
     </div>
 </template>
 
@@ -16,18 +18,27 @@
         data() {
             return {
                 config: {
+                    inlineToolbar: ['link', 'marker', 'bold', 'italic'],
                     tools: {
+                        image: {
+                            class: SimpleImage,
+                            config: {
+                            }
+                        },
+                        marker: {
+                            class: Marker,
+                            shortcut: 'CMD+SHIFT+M',
+                        },
+                        underline: {
+                            class: Underline
+                        },
                         header: {
                             class: Header,
+                            inlineToolbar: ['bold', 'italic', 'underline'],
                             config: {
                                 placeholder: 'Enter a header',
                                 levels: [2, 3, 4],
                                 defaultLevel: 3
-                            }
-                        },
-                        image: {
-                            class: SimpleImage,
-                            config: {
                             }
                         },
                         table: {
@@ -57,7 +68,7 @@
         },
         methods: {
             onInitialized (editor) {
-                console.log(editor)
+                console.log(editor);
             }
         }
     }

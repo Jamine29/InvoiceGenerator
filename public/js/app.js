@@ -3107,6 +3107,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -3116,18 +3118,27 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       config: {
+        inlineToolbar: ['link', 'marker', 'bold', 'italic'],
         tools: {
+          image: {
+            "class": _editorjs_simple_image__WEBPACK_IMPORTED_MODULE_1___default.a,
+            config: {}
+          },
+          marker: {
+            "class": _editorjs_marker__WEBPACK_IMPORTED_MODULE_2___default.a,
+            shortcut: 'CMD+SHIFT+M'
+          },
+          underline: {
+            "class": _editorjs_underline__WEBPACK_IMPORTED_MODULE_4___default.a
+          },
           header: {
             "class": _editorjs_header__WEBPACK_IMPORTED_MODULE_0___default.a,
+            inlineToolbar: ['bold', 'italic', 'underline'],
             config: {
               placeholder: 'Enter a header',
               levels: [2, 3, 4],
               defaultLevel: 3
             }
-          },
-          image: {
-            "class": _editorjs_simple_image__WEBPACK_IMPORTED_MODULE_1___default.a,
-            config: {}
           },
           table: {
             "class": _editorjs_table__WEBPACK_IMPORTED_MODULE_3___default.a,
@@ -39022,18 +39033,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("p", [_vm._v("Rechnungsgenerator")]),
-      _vm._v(" "),
-      _c("editor", {
-        ref: "editor",
-        attrs: { config: _vm.config, initialized: _vm.onInitialized }
-      })
-    ],
-    1
-  )
+  return _c("div", [
+    _c("p", [_vm._v("Rechnungsgenerator")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _c("editor", {
+          ref: "editor",
+          attrs: { config: _vm.config, initialized: _vm.onInitialized }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
