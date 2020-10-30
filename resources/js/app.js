@@ -8,6 +8,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+/*Editor.js*/
+import Editor from 'vue-editor-js';
+Vue.use(Editor);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
