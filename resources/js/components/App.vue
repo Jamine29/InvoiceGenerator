@@ -1,8 +1,7 @@
 <template>
     <div>
-        <p>Rechnungsgenerator</p>
         <div>
-            <editor ref="editor" :config="config" :initialized="onInitialized" />
+            <editor ref="editor" :config="config" :initialized="onInitialized" :ready="onReady" />
         </div>
 
     </div>
@@ -14,13 +13,20 @@
     import Table from '@editorjs/table';
     import Underline from '@editorjs/underline';
     import SimpleImage from '@editorjs/simple-image';
+    import Align from '../../plugins/align/index.js';
+    import DragDrop from 'editorjs-drag-drop';
+    import Undo from 'editorjs-undo';
+    const Paragraph = require('editorjs-paragraph-with-alignment');
 
     export default {
         data() {
             return {
                 config: {
-                    inlineToolbar: ['link', 'marker', 'bold', 'italic'],
+                    inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
                     tools: {
+                        align: {
+                            class: Align
+                        },
                         image: {
                             class: SimpleImage,
                             config: {
@@ -48,8 +54,19 @@
                             config: {
                                 rows: 2,
                                 cols: 3,
-                            },
+                            }
+                        },
+                        paragraph: {
+                            class: Paragraph,
+                            inlineToolbar: true,
                         }
+                    },
+                    onReady: () => {
+                        console.log('in ready');
+                        const editor = this.$refs.editor.state.editor;
+                        new DragDrop(editor);
+                        new Undo({ editor });
+
                     },
                     data: {
                         "time": 1591362820044,
@@ -68,8 +85,10 @@
             }
         },
         methods: {
-            onInitialized (editor) {
+            onInitialized(editor) {
                 console.log(editor);
+            },
+            onReady() {
             }
         }
     }

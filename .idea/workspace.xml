@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,11 +160,17 @@
       <option name="presentableId" value="Default" />
       <updated>1603954389060</updated>
       <workItem from="1603954390159" duration="19959000" />
-      <workItem from="1604037987780" duration="14262000" />
+      <workItem from="1604037987780" duration="20146000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="339" y="154" key="run.anything.popup" timestamp="1604066906156">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="339" y="154" key="run.anything.popup/0.0.1280.680/2560.0.1920.1040@0.0.1280.680" timestamp="1604066906156" />
   </component>
 </project>
