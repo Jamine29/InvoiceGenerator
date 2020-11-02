@@ -12,6 +12,14 @@ window.Vue = require('vue');
 import Editor from 'vue-editor-js';
 Vue.use(Editor);
 
+import Vue from 'vue'
+import VueDraggableResizable from 'vue-draggable-resizable'
+
+// optionally import default styles
+import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
+
+Vue.component('vue-draggable-resizable', VueDraggableResizable)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -4,11 +4,28 @@
             <editor ref="editor" :config="config" :initialized="onInitialized" :ready="onReady" />
         </div>
 
+        <div class="container">
+            <vue-draggable-resizable :w="100" :h="100" @dragging="onDrag" @resizing="onResize" :parent="true">
+                <p>Hello! I'm a flexible component. You can drag me around and you can resize me.<br>
+                    X: {{ x }} / Y: {{ y }} - Width: {{ width }} / Height: {{ height }}</p>
+            </vue-draggable-resizable>
+            <vue-draggable-resizable :w="100" :h="100" @dragging="onDrag" @resizing="onResize" :parent="true">
+                <p>Hello! I'm a flexible component. You can drag me around and you can resize me.<br>
+                    X: {{ x }} / Y: {{ y }} - Width: {{ width }} / Height: {{ height }}</p>
+            </vue-draggable-resizable>
+            <vue-draggable-resizable :w="100" :h="100" @dragging="onDrag" @resizing="onResize" :parent="true">
+                <img src="../../../public/img/image.jpg" v-bind:width="width" v-bind:heigth="height">
+            </vue-draggable-resizable>
+            <vue-draggable-resizable :w="100" :h="100" @dragging="onDrag" @resizing="onResize" :parent="true">
+                <input type="text"/>
+            </vue-draggable-resizable>
+        </div>
     </div>
 </template>
 
 <script>
-    import Header from '@editorjs/header';
+    const Header = require('../../plugins/header/index.js');
+    //import Header from '@editorjs/header';
     import Marker from '@editorjs/marker';
     import Table from '@editorjs/table';
     import Underline from '@editorjs/underline';
@@ -21,6 +38,10 @@
     export default {
         data() {
             return {
+                width: 100,
+                height: 100,
+                x: 0,
+                y: 0,
                 config: {
                     inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
                     tools: {
@@ -66,11 +87,11 @@
                         const editor = this.$refs.editor.state.editor;
                         new DragDrop(editor);
                         new Undo({ editor });
-
                     },
                     data: {
                         "time": 1591362820044,
                         "blocks": [
+                            /*
                             {
                                 "type" : "header",
                                 "data" : {
@@ -78,6 +99,7 @@
                                     "level" : 2
                                 }
                             }
+                            */
                         ],
                         "version" : "2.18.0"
                     }
@@ -85,6 +107,16 @@
             }
         },
         methods: {
+            onResize: function (x, y, width, height) {
+                this.x = x
+                this.y = y
+                this.width = width
+                this.height = height
+            },
+            onDrag: function (x, y) {
+                this.x = x
+                this.y = y
+            },
             onInitialized(editor) {
                 console.log(editor);
             },
@@ -93,3 +125,38 @@
         }
     }
 </script>
+
+<style>
+    body {
+        background-color:hsla(0,0%, 50%,0.2);
+    }
+
+    #vue-editor-js {
+        background-color:hsla(0,0%, 100%,1);
+        height: 842px;
+        width: 	595px;
+        position: relative;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        padding: 0;
+        box-shadow: 5px 10px 18px #888888;
+        margin-left: 20%;
+    }
+
+    .container {
+        background-color:hsla(0,0%, 100%,1);
+        height: 842px;
+        width: 	595px;
+        position: relative;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        padding: 0;
+        box-shadow: 5px 10px 18px #888888;
+    }
+
+    @media (min-width: 651px) {
+        .codex-editor--narrow .codex-editor__redactor {
+            margin-right: 0px;
+        }
+    }
+</style>

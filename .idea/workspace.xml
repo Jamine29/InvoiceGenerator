@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb2edbce-0ad9-454a-8a3b-1ef4e1cf763c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/AppE.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laradock" beforeDir="false" afterPath="$PROJECT_DIR$/laradock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laradock/env-example" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/App.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,9 +143,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\public\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -161,6 +171,7 @@
       <updated>1603954389060</updated>
       <workItem from="1603954390159" duration="19959000" />
       <workItem from="1604037987780" duration="20146000" />
+      <workItem from="1604296318538" duration="22119000" />
     </task>
     <servers />
   </component>
@@ -168,9 +179,9 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="339" y="154" key="run.anything.popup" timestamp="1604066906156">
+    <state x="339" y="154" key="run.anything.popup" timestamp="1604300885342">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="339" y="154" key="run.anything.popup/0.0.1280.680/2560.0.1920.1040@0.0.1280.680" timestamp="1604066906156" />
+    <state x="339" y="154" key="run.anything.popup/0.0.1280.680/2560.0.1920.1040@0.0.1280.680" timestamp="1604300885342" />
   </component>
 </project>
