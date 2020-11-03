@@ -13,7 +13,7 @@ import Marker from '@editorjs/marker';
 import Table from '@editorjs/table';
 import Underline from '@editorjs/underline';
 import SimpleImage from '@editorjs/simple-image';
-import Align from '../../plugins/align/index.js';
+import RedTextColor from '../../plugins/redTextColor/index.js';
 import DragDrop from 'editorjs-drag-drop';
 import Undo from 'editorjs-undo';
 const Paragraph = require('editorjs-paragraph-with-alignment');
@@ -21,10 +21,10 @@ export default {
     data() {
         return {
             config: {
-                inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
+                inlineToolbar: ['link', 'marker', 'bold', 'italic', 'redTextColor'],
                 tools: {
-                    align: {
-                        class: Align
+                    redTextColor: {
+                        class: RedTextColor
                     },
                     image: {
                         class: SimpleImage,

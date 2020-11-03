@@ -1,13 +1,13 @@
 require('./index.css').toString();
 
-class Align {
+class RedTextColor {
 
     static get isInline() {
         return true;
     }
 
     static get CSS() {
-        return 'cdx-align';
+        return 'cdx-redTextColor';
     };
 
     get state() {
@@ -25,14 +25,14 @@ class Align {
         this.button = null;
         this._state = false;
 
-        this.tag = 'Align';
-        this.class = 'cdx-align';
+        this.tag = 'RedTextColor';
+        this.class = 'cdx-redTextColor';
     }
 
     render() {
         this.button = document.createElement('button');
         this.button.type = 'button';
-        this.button.textContent = 'A';
+        this.button.textContent = 'RedText';
 
         return this.button;
     }
@@ -48,30 +48,30 @@ class Align {
 
     wrap(range) {
         const selectedText = range.extractContents();
-        const align = document.createElement(this.tag);
+        const redTextColor = document.createElement(this.tag);
 
-        align.classList.add(this.class);
-        align.appendChild(selectedText);
-        range.insertNode(align);
+        redTextColor.classList.add(this.class);
+        redTextColor.appendChild(selectedText);
+        range.insertNode(redTextColor);
 
-        this.api.selection.expandToTag(align);
+        this.api.selection.expandToTag(redTextColor);
     }
 
     unwrap(range) {
-        const align = this.api.selection.findParentTag(this.tag, this.class);
+        const redTextColor = this.api.selection.findParentTag(this.tag, this.class);
         const text = range.extractContents();
 
-        align.remove();
+        redTextColor.remove();
 
         range.insertNode(text);
     }
 
 
     checkState() {
-        const align = this.api.selection.findParentTag(this.tag);
+        const redTextColor = this.api.selection.findParentTag(this.tag);
 
-        this.state = !!align;
+        this.state = !!redTextColor;
     }
 }
 
-module.exports = Align;
+module.exports = RedTextColor;
