@@ -9,8 +9,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 /*Editor.js*/
-import Editor from 'vue-editor-js';
-Vue.use(Editor);
+//import Editor from 'vue-editor-js';
+//Vue.use(Editor);
 
 import Vue from 'vue'
 import VueDraggableResizable from 'vue-draggable-resizable'
@@ -33,7 +33,7 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('app', require('./components/App.vue').default);
+Vue.component('app', require('./components/App1.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

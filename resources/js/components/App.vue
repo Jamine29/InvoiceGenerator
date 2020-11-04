@@ -1,9 +1,8 @@
 <template>
     <div>
         <CanvasSize />
-        <div>
-            <editor ref="editor" :config="config" :initialized="onInitialized" :ready="onReady" />
-        </div>
+        <Font />
+        <editor ref="editor" :config="config" :initialized="onInitialized" :ready="onReady" />
     </div>
 </template>
 
@@ -15,20 +14,50 @@
     import SimpleImage from '@editorjs/simple-image';
     import RedTextColor from '../../plugins/redTextColor/index.js';
     import DragDrop from 'editorjs-drag-drop';
-    const Paragraph = require('editorjs-paragraph-with-alignment');
+    import Paragraph from 'editorjs-paragraph-with-alignment';
+    import ColorPlugin from 'editorjs-text-color-plugin';
+    import TextAlign from '@canburaks/text-align-editorjs';
+    import Strikethrough from '@itech-indrustries/editorjs-strikethrough';
+    import Delimiter from '@editorjs/delimiter';
+    import Spacer from '@veryard/spacer';
 
     import CanvasSize from './CanvasSize.vue';
+    import Font from './Font.vue';
 
     export default {
         components: {
-            CanvasSize
+            CanvasSize,
+            Font
         },
         data() {
             return {
                 config: {
-                    inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
+                    inlineToolbar: ['link', 'marker', 'bold', 'italic', 'redTextColor', 'color', 'textAlign', 'strikethrough'],
                     tools: {
-                        align: {
+                        spacer: Spacer,
+                        delimiter: Delimiter,
+                        strikethrough: {
+                            class: Strikethrough
+                        },
+                        textAlign: {
+                            class: TextAlign
+                        },
+                        color: {
+                            class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
+                            config: {
+                                colorCollections: ['#FF1300','#EC7878','#9C27B0','#673AB7','#3F51B5','#0070FF','#03A9F4','#00BCD4','#4CAF50','#8BC34A','#CDDC39', '#FFF'],
+                                defaultColor: '#FF1300',
+                                type: 'text',
+                            }
+                        },
+                        marker: {
+                            class: ColorPlugin,
+                            config: {
+                                defaultColor: '#FFBF00',
+                                type: 'marker',
+                            }
+                        },
+                        redTextColor: {
                             class: RedTextColor
                         },
                         image: {
@@ -36,10 +65,12 @@
                             config: {
                             }
                         },
+                        /*
                         marker: {
                             class: Marker,
                             shortcut: 'CMD+SHIFT+M',
                         },
+                        */
                         underline: {
                             class: Underline
                         },
@@ -79,6 +110,12 @@
                                     "text" : "Editor.js",
                                     "level" : 2
                                 }
+                            },
+                            {
+                                "type" : "paragraph",
+                                "data" : {
+                                    "text" : "Ich bin ein Editor."
+                                }
                             }
                         ],
                         "version" : "2.18.0"
@@ -103,7 +140,7 @@
 
     #vue-editor-js {
         background-color:hsla(0,0%, 100%,1);
-        height: 842px;
+        /**/height: 842px;
         width: 	595px;
         position: relative;
         margin-top: 25px;
@@ -119,16 +156,16 @@
 
     .codex-editor {
         padding: 10px 20px;
-        height: 842px;
+        /**/height: 842px;
     }
 
-    @media (min-width: 651px) {
+    @media(min-width: 651px) {
         .codex-editor--narrow .codex-editor__redactor {
             margin-right: 0px;
         }
     }
 
-    @media (min-width: 651px) {
+    @media(min-width: 651px) {
         .codex-editor--narrow .ce-toolbar__actions {
             right: 0px;
         }
@@ -136,5 +173,6 @@
 
     .ce-block__content {
         margin: 0;
+        max-width: 100%;
     }
 </style>
