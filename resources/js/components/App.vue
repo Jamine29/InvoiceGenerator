@@ -175,4 +175,8 @@
         margin: 0;
         max-width: 100%;
     }
+
+    #fixed-title-block {
+        padding: 0px 20px;
+    }
 </style>

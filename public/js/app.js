@@ -2315,7 +2315,9 @@ var editor = new _editorjs__WEBPACK_IMPORTED_MODULE_10___default.a({
    * Create a holder for the Editor and pass its ID
    */
   holder: 'editorjs',
-  fixedTitleBlock: true,
+  fixedTitleBlock: {
+    placeholder: "Header"
+  },
 
   /**
    * Available Tools list.
@@ -7075,7 +7077,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color:hsla(0,0%, 50%,0.2);\n}\n#vue-editor-js {\n    background-color:hsla(0,0%, 100%,1);\n    /**/height: 842px;\n    width: \t595px;\n    position: relative;\n    margin-top: 25px;\n    margin-bottom: 25px;\n    padding: 0;\n    box-shadow: 5px 10px 18px #888888;\n    margin-left: 20%;\n}\n.ce-toolbar__plus {\n    transform: translate3d(-12px, calc(17px - 50%), 0px) !important;\n}\n.codex-editor {\n    padding: 10px 20px;\n    /**/height: 842px;\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .codex-editor__redactor {\n        margin-right: 0px;\n}\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .ce-toolbar__actions {\n        right: 0px;\n}\n}\n.ce-block__content {\n    margin: 0;\n    max-width: 100%;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color:hsla(0,0%, 50%,0.2);\n}\n#vue-editor-js {\n    background-color:hsla(0,0%, 100%,1);\n    /**/height: 842px;\n    width: \t595px;\n    position: relative;\n    margin-top: 25px;\n    margin-bottom: 25px;\n    padding: 0;\n    box-shadow: 5px 10px 18px #888888;\n    margin-left: 20%;\n}\n.ce-toolbar__plus {\n    transform: translate3d(-12px, calc(17px - 50%), 0px) !important;\n}\n.codex-editor {\n    padding: 10px 20px;\n    /**/height: 842px;\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .codex-editor__redactor {\n        margin-right: 0px;\n}\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .ce-toolbar__actions {\n        right: 0px;\n}\n}\n.ce-block__content {\n    margin: 0;\n    max-width: 100%;\n}\n#fixed-title-block {\n    padding: 0px 20px;\n}\n", ""]);
 
 // exports
 
@@ -7094,7 +7096,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color:hsla(0,0%, 50%,0.2);\n}\n#vue-editor-js {\n    background-color:hsla(0,0%, 100%,1);\n    /**/height: 842px;\n    width: \t595px;\n    position: relative;\n    margin-top: 25px;\n    margin-bottom: 25px;\n    padding: 0;\n    box-shadow: 5px 10px 18px #888888;\n    margin-left: 20%;\n}\n.ce-toolbar__plus {\n    transform: translate3d(-12px, calc(17px - 50%), 0px) !important;\n}\n.codex-editor {\n    padding: 10px 20px;\n    /**/height: 842px;\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .codex-editor__redactor {\n        margin-right: 0px;\n}\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .ce-toolbar__actions {\n        right: 0px;\n}\n}\n.ce-block__content {\n    margin: 0;\n    max-width: 100%;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color:hsla(0,0%, 50%,0.2);\n}\n#vue-editor-js {\n    background-color:hsla(0,0%, 100%,1);\n    /**/height: 842px;\n    width: \t595px;\n    position: relative;\n    margin-top: 25px;\n    margin-bottom: 25px;\n    padding: 0;\n    box-shadow: 5px 10px 18px #888888;\n    margin-left: 20%;\n}\n.ce-toolbar__plus {\n    transform: translate3d(-12px, calc(17px - 50%), 0px) !important;\n}\n.codex-editor {\n    padding: 10px 20px;\n    /**/height: 842px;\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .codex-editor__redactor {\n        margin-right: 0px;\n}\n}\n@media(min-width: 651px) {\n.codex-editor--narrow .ce-toolbar__actions {\n        right: 0px;\n}\n}\n.ce-block__content {\n    margin: 0;\n    max-width: 100%;\n}\n\n/**/\n.fixed-title-block-container {\n    margin: 0;\n}\n.codex-editor {\n    padding-top: 0 !important;\n    height: auto !important;\n    background: white;\n}\n.codex-editor__redactor {\n    padding-bottom: 600px !important;\n}\n#editorjs {\n    width: 650px;\n    margin-left: 206px;\n}\n", ""]);
 
 // exports
 

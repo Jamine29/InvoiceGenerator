@@ -28,7 +28,9 @@
          */
         holder : 'editorjs',
 
-        fixedTitleBlock:true,
+        fixedTitleBlock:{
+            placeholder: "Header"
+        },
 
         /**
          * Available Tools list.
@@ -206,5 +208,25 @@
     .ce-block__content {
         margin: 0;
         max-width: 100%;
+    }
+
+    /**/
+    .fixed-title-block-container {
+        margin: 0;
+    }
+
+    .codex-editor {
+        padding-top: 0 !important;
+        height: auto !important;
+        background: white;
+    }
+
+    .codex-editor__redactor {
+        padding-bottom: 600px !important;
+    }
+
+    #editorjs {
+        width: 650px;
+        margin-left: 206px;
     }
 </style>
