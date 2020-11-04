@@ -2313,12 +2313,17 @@ var _this = undefined;
 
 
 var editor = new _editorjs__WEBPACK_IMPORTED_MODULE_10___default.a({
+  readOnly: false,
+
   /**
    * Create a holder for the Editor and pass its ID
    */
   holder: 'editorjs',
   fixedTitleBlock: {
     placeholder: "Header"
+  },
+  fixedFooterBlock: {
+    placeholder: "Footer"
   },
 
   /**
@@ -2428,6 +2433,12 @@ var editor = new _editorjs__WEBPACK_IMPORTED_MODULE_10___default.a({
         "version": "2.18.0"
       }
     }
+  },
+  onReady: function onReady() {
+    console.log('hier');
+  },
+  onChange: function onChange() {
+    console.log('something changed');
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2438,12 +2449,7 @@ var editor = new _editorjs__WEBPACK_IMPORTED_MODULE_10___default.a({
   data: function data() {
     return {};
   },
-  methods: {
-    onInitialized: function onInitialized(editor) {
-      console.log(editor);
-    },
-    onReady: function onReady() {}
-  }
+  methods: {}
 });
 
 /***/ }),

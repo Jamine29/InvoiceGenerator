@@ -34,4 +34,9 @@ export interface OutputData {
    * Title block
    */
   title: string;
+
+  /**
+   * Footer block
+   */
+  footer: string;
 }

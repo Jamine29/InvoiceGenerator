@@ -280,6 +280,15 @@ export default class UI extends Module {
 
     this.nodes.wrapper.appendChild(this.nodes.redactor);
     this.nodes.holder.appendChild(this.nodes.wrapper);
+
+    /**
+     * If fixedFooterBlock is ture, add fixedFooterBlock Element
+     */
+    if (this.config.fixedFooterBlock) {
+      const fixedFooterBlock = await this.makeFixedFooterBlock();
+
+      this.nodes.holder.appendChild(fixedFooterBlock);
+    }
   }
 
   /**
@@ -319,6 +328,45 @@ export default class UI extends Module {
     fixedTitleBlockContainer.appendChild(fixedTitleBlock);
 
     return fixedTitleBlockContainer;
+  }
+
+  /**
+   * Makes FixedFooterBlock interface
+   */
+  private async makeFixedFooterBlock(): Promise<HTMLElement> {
+    /**
+     * Container for textarea element
+     */
+    const fixedFooterBlockContainer = $.make('div', 'fixed-footer-block-container');
+
+    /**
+     * Creating the title block
+     * Did not use dom.ts ($) beacuse it returns HTMLElement,
+     * not the required HTMLTextAreaElement
+     */
+    const fixedFooterBlock = document.createElement('textarea');
+
+    fixedFooterBlock.rows = 1;
+    fixedFooterBlock.id = 'fixed-footer-block';
+    /**
+     * If fixedTitleBlock is an object provided by user (instead of boolean)
+     * then assigning placeholder prperty from the object
+     */
+    if (typeof this.config.fixedFooterBlock != 'boolean') {
+      fixedFooterBlock.placeholder = this.config.fixedFooterBlock.placeholder;
+    } else {
+      fixedFooterBlock.placeholder = 'Footer';
+    }
+
+    /**
+     * autosize module is used to chnage size of teatarea on input change
+     * check it out on npm for documentation
+     */
+
+    autosize(fixedFooterBlock);
+    fixedFooterBlockContainer.appendChild(fixedFooterBlock);
+
+    return fixedFooterBlockContainer;
   }
 
   /**

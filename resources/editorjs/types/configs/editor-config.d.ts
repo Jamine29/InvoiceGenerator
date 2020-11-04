@@ -2,7 +2,8 @@ import {ToolConstructable, ToolSettings} from '../tools';
 import {API, LogLevels, OutputData} from '../index';
 import {SanitizerConfig} from './sanitizer-config';
 import {I18nConfig} from './i18n-config';
-import {FixedTitleBlockConfig} from './fixed-title-block-config'
+import {FixedTitleBlockConfig} from './fixed-title-block-config';
+import {FixedFooterBlockConfig} from './fixed-footer-block-config';
 
 export interface EditorConfig {
   /**
@@ -73,6 +74,11 @@ export interface EditorConfig {
    * If true, add a fixed title block
    */
   fixedTitleBlock: boolean|FixedTitleBlockConfig;
+
+  /**
+   * If true, add a fixed footer block
+   */
+  fixedFooterBlock: boolean|FixedFooterBlockConfig;
 
   /**
    * Fires when Editor is ready to work

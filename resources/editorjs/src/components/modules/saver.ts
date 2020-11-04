@@ -11,6 +11,7 @@ import { ValidatedData } from '../../types-internal/block-data';
 import Block from '../block';
 import * as _ from '../utils';
 import fixedTitleBlock from '../fixedTitleBlock';
+import fixedFooterBlock from "../fixedFooterBlock";
 
 declare const VERSION: string;
 
@@ -117,11 +118,17 @@ export default class Saver extends Module {
      */
     const title = fixedTitleBlock.getTitleText();
 
+    /**
+     * FixedFooterBlock text value
+     */
+    const footer = fixedFooterBlock.getFooterText();
+
     return {
       time: +new Date(),
       blocks,
       version: VERSION,
       title,
+      footer,
     };
   }
 }

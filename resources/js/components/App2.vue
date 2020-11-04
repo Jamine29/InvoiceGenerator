@@ -25,6 +25,7 @@
     import EditorJS from '../../editorjs';
 
     let editor = new EditorJS({
+        readOnly: false,
         /**
          * Create a holder for the Editor and pass its ID
          */
@@ -32,6 +33,10 @@
 
         fixedTitleBlock:{
             placeholder: "Header"
+        },
+
+        fixedFooterBlock:{
+            placeholder: "Footer"
         },
 
         /**
@@ -146,6 +151,12 @@
                     "version" : "2.18.0"
                 }
             }
+        },
+        onReady: function(){
+            console.log('hier');
+        },
+        onChange: function() {
+            console.log('something changed');
         }
     });
 
@@ -160,11 +171,6 @@
             }
         },
         methods: {
-            onInitialized(editor) {
-                console.log(editor);
-            },
-            onReady() {
-            }
         }
     }
 </script>

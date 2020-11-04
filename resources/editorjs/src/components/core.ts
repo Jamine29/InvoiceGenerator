@@ -124,6 +124,7 @@ export default class Core {
       config = {
         holder: config,
         fixedTitleBlock: false,
+        fixedFooterBlock: false,
       };
     }
 
