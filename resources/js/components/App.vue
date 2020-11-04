@@ -22,7 +22,7 @@
     import Spacer from '@veryard/spacer';
 
     import CanvasSize from './CanvasSize.vue';
-    import Font from './Font.vue';
+    import Font from './CanvasFont.vue';
 
     export default {
         components: {

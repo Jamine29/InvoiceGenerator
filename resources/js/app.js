@@ -12,13 +12,13 @@ window.Vue = require('vue');
 //import Editor from 'vue-editor-js';
 //Vue.use(Editor);
 
-import Vue from 'vue'
-import VueDraggableResizable from 'vue-draggable-resizable'
+//import Vue from 'vue'
+//import VueDraggableResizable from 'vue-draggable-resizable'
 
 // optionally import default styles
-import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
+//import 'vue-draggable-resizable/dist/VueDraggableResizable.css'
 
-Vue.component('vue-draggable-resizable', VueDraggableResizable)
+//Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 /**
  * The following block of code may be used to automatically register your
@@ -33,7 +33,7 @@ Vue.component('vue-draggable-resizable', VueDraggableResizable)
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('app', require('./components/App1.vue').default);
+Vue.component('app', require('./components/App2.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

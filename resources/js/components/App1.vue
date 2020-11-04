@@ -17,7 +17,7 @@
     import Paragraph from 'editorjs-paragraph-with-alignment';
 
     import CanvasSize from './CanvasSize.vue';
-    import Font from './Font.vue';
+    import Font from './CanvasFont.vue';
 
     //import EditorJS from '@editorjs/editorjs';
     import EditorJS from '../../editorjs';
