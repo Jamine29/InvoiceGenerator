@@ -182,7 +182,8 @@
 
     #vue-editor-js {
         background-color:hsla(0,0%, 100%,1);
-        /**/height: 842px;
+        /*height: 842px;*/
+        height: 714px;
         width: 	595px;
         position: relative;
         margin-top: 25px;
@@ -198,7 +199,8 @@
 
     .codex-editor {
         padding: 10px 20px;
-        /**/height: 842px;
+        /*height: 842px;*/
+        height: 714px; /* wie kann ich die ausgangsgröße einstellen? */
     }
 
     @media(min-width: 651px) {
@@ -221,6 +223,14 @@
     /**/
     .fixed-title-block-container {
         margin: 0;
+    }
+
+    .fixed-footer-block-container {
+        margin: 0;
+    }
+
+    #fixed-footer-block {
+        padding: 0px 20px;
     }
 
     .codex-editor {
