@@ -33,7 +33,7 @@ export interface OutputData {
   /**
    * Title block
    */
-  title: string;
+  //title: string;
 
   /**
    * Footer block

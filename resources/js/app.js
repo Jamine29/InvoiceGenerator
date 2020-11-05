@@ -33,7 +33,7 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.component('app', require('./components/App2.vue').default);
+Vue.component('app', require('./components/App.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,5 +43,5 @@ Vue.component('app', require('./components/App2.vue').default);
 
 const app = new Vue({
     el: '#app',
-    component: require('./components/App.vue')
+    component: require('./components/Vue1/App.vue')
 });

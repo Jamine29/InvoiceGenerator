@@ -13,7 +13,7 @@ import Marker from '@editorjs/marker';
 import Table from '@editorjs/table';
 import Underline from '@editorjs/underline';
 import SimpleImage from '@editorjs/simple-image';
-import RedTextColor from '../../plugins/redTextColor/index.js';
+import RedTextColor from '../../../plugins/redTextColor';
 import DragDrop from 'editorjs-drag-drop';
 import Undo from 'editorjs-undo';
 const Paragraph = require('editorjs-paragraph-with-alignment');

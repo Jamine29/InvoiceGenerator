@@ -12,7 +12,7 @@
     import Table from '@editorjs/table';
     import Underline from '@editorjs/underline';
     import SimpleImage from '@editorjs/simple-image';
-    import RedTextColor from '../../plugins/redTextColor/index.js';
+    import RedTextColor from '../../../plugins/redTextColor';
     import DragDrop from 'editorjs-drag-drop';
     import Paragraph from 'editorjs-paragraph-with-alignment';
 
@@ -20,7 +20,7 @@
     import Font from './CanvasFont.vue';
 
     //import EditorJS from '@editorjs/editorjs';
-    import EditorJS from '../../editorjs';
+    import EditorJS from '../../../editorjs/types';
 
     let editor = new EditorJS({
         /**

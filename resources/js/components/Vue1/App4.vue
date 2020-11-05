@@ -2,7 +2,13 @@
     <div>
         <CanvasSize />
         <CanvasFont />
-        <div id="editorjs"></div>
+        <!--<ExportHtml />-->
+        <button class="style-button-export" @click="handleExportHTML">Export Editor</button>
+        <div>
+            <div v-if="this.importHtml === false" id="editorjs"></div>
+            <div v-else v-html="htmlString"></div>
+            <p>{{this.importHtml}}</p>
+        </div>
     </div>
 </template>
 
@@ -20,6 +26,7 @@
 
     import CanvasSize from './CanvasSize.vue';
     import CanvasFont from './CanvasFont.vue';
+    import ExportHtml from './ExportHtml.vue';
 
     //import EditorJS from '@editorjs/editorjs';
     import EditorJS from '../../editorjs';
@@ -30,6 +37,8 @@
          * Create a holder for the Editor and pass its ID
          */
         holder : 'editorjs',
+
+        autofocus: true,
 
         fixedTitleBlock:{
             placeholder: "Header"
@@ -163,19 +172,39 @@
     export default {
         components: {
             CanvasSize,
-            CanvasFont
+            CanvasFont,
+            //ExportHtml
         },
         data() {
             return {
-
+                importHtml: false,
+                htmlString: ''
             }
         },
         methods: {
+            handleExportHTML() {
+                console.log('hier');
+                const editorAsHtml = document.getElementById('editorjs');
+                console.log('HTML');
+                console.log(editorAsHtml);
+                const editorAsString = editorAsHtml.outerHTML;   //.outerHTML;
+                console.log('String');
+                console.log(editorAsString);
+                //this.hstr = editorAsString;
+                this.importHtml = true;
+                //this.htmlString = editorAsString;
+            }
         }
     }
 </script>
 
 <style>
+    .style-button-export {
+        margin-left: 20%;
+        margin-top: 2%;
+        margin-bottom: 5%;
+    }
+
     body {
         background-color:hsla(0,0%, 50%,0.2);
     }
@@ -246,5 +275,13 @@
     #editorjs {
         width: 650px;
         margin-left: 206px;
+    }
+
+    .fixed-title-block-container {
+        background: white;
+    }
+
+    .fixed-footer-block-container {
+        background: white;
     }
 </style>

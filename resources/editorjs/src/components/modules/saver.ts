@@ -116,7 +116,7 @@ export default class Saver extends Module {
     /**
      * FixedTitleBlock text value
      */
-    const title = fixedTitleBlock.getTitleText();
+    //const title = fixedTitleBlock.getTitleText();
 
     /**
      * FixedFooterBlock text value
@@ -127,7 +127,7 @@ export default class Saver extends Module {
       time: +new Date(),
       blocks,
       version: VERSION,
-      title,
+      //title,
       footer,
     };
   }

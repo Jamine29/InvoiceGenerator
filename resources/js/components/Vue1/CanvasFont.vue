@@ -24,8 +24,7 @@
         },
         methods: {
             handleCanvasFont() {
-                console.log("hier");
-                document.getElementById("editorjs").style.fontFamily = this.selectedCanvasFont;
+                document.getElementById("vue-editor-js").style.fontFamily = this.selectedCanvasFont;
             }
         }
     }

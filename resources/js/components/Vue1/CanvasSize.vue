@@ -79,8 +79,8 @@
                 }
             },
             setCanvasSize(height, width) {
-                document.getElementById("editorjs").style.height = height+"px";
-                document.getElementById("editorjs").style.width = width+"px";
+                document.getElementById("vue-editor-js").style.height = height+"px";
+                document.getElementById("vue-editor-js").style.width = width+"px";
             }
         }
     }

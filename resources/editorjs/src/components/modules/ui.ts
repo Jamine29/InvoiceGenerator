@@ -305,19 +305,26 @@ export default class UI extends Module {
      * Did not use dom.ts ($) beacuse it returns HTMLElement,
      * not the required HTMLTextAreaElement
      */
-    const fixedTitleBlock = document.createElement('textarea');
 
-    fixedTitleBlock.rows = 1;
-    fixedTitleBlock.id = 'fixed-title-block';
+    //const fixedTitleBlock = document.createElement('textarea');
+    const fixedTitleBlock = document.createElement('div');
+
+    //fixedTitleBlock.rows = 1;
+    //fixedTitleBlock.id = 'fixed-title-block';
+
+    fixedTitleBlock.id = "editor1";
+
     /**
      * If fixedTitleBlock is an object provided by user (instead of boolean)
      * then assigning placeholder prperty from the object
      */
+    /*
     if (typeof this.config.fixedTitleBlock != 'boolean') {
       fixedTitleBlock.placeholder = this.config.fixedTitleBlock.placeholder;
     } else {
       fixedTitleBlock.placeholder = 'Title';
     }
+     */
 
     /**
      * autosize module is used to chnage size of teatarea on input change
