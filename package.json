@@ -41,6 +41,8 @@
         "autosize": "^4.0.2",
         "editorjs-paragraph-with-alignment": "^1.1.0",
         "editorjs-text-color-plugin": "^1.1.22",
+        "interactjs": "^1.10.0",
+        "vue-drag-resize": "^1.4.2",
         "vue-editor-js": "^2.0.1"
     }
 }

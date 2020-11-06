@@ -3,11 +3,21 @@
         <CanvasSize />
         <CanvasFont />
         <div id="editorjs"></div>
+
+
+            <div class="demo" style="height: 500px; background: red; width: 500px;margin-left:50px">
+                <div id="demo 2" style="width: 300px; height: 300px; background: yellow;">
+                    <div class="resize-drag" style="width: 50px; height: 50px; background: blue;">
+                        Resize from any edge or corner
+                    </div>
+                </div>
+            </div>
+
     </div>
 </template>
 
 <script>
-    /* Font und Size funktioniert nicht*/
+    /* Font und Size noch ändern*/
 
     import Header from '@editorjs/header';
     import Marker from '@editorjs/marker';
@@ -23,6 +33,78 @@
 
     //import EditorJS from '@editorjs/editorjs';
     import EditorJS from '../../editorjs';
+
+    const interact = require('interactjs');
+
+    interact('.resize-drag')
+        .resizable({
+            // resize from all edges and corners
+            edges: { left: true, right: true, bottom: true, top: true },
+
+            listeners: {
+                move (event) {
+                    var target = event.target
+                    var x = (parseFloat(target.getAttribute('data-x')) || 0)
+                    var y = (parseFloat(target.getAttribute('data-y')) || 0)
+
+                    // update the element's style
+                    target.style.width = event.rect.width + 'px'
+                    target.style.height = event.rect.height + 'px'
+
+                    // translate when resizing from top or left edges
+                    x += event.deltaRect.left
+                    y += event.deltaRect.top
+
+                    target.style.webkitTransform = target.style.transform =
+                        'translate(' + x + 'px,' + y + 'px)'
+
+                    target.setAttribute('data-x', x)
+                    target.setAttribute('data-y', y)
+                    target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+                }
+            },
+            modifiers: [
+                // keep the edges inside the parent
+                interact.modifiers.restrictEdges({
+                    outer: 'parent'
+                }),
+
+                // minimum size
+                interact.modifiers.restrictSize({
+                    min: { width: 100, height: 50 }
+                })
+            ],
+
+            inertia: true
+        })
+        .draggable({
+            listeners: { move: dragMoveListener },
+            inertia: true,
+            modifiers: [
+                interact.modifiers.restrictRect({
+                    restriction: '#editor1',
+                    endOnly: true
+                })
+            ]
+
+        })
+    function dragMoveListener (event) {
+        var target = event.target
+        // keep the dragged position in the data-x/data-y attributes
+        var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+        var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+        // translate the element
+        target.style.webkitTransform =
+            target.style.transform =
+                'translate(' + x + 'px, ' + y + 'px)'
+
+        // update the posiion attributes
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
+    }
+
+    window.dragMoveListener = dragMoveListener;
 
     let editor = new EditorJS({
         readOnly: false,
@@ -41,9 +123,7 @@
 
         fixedTitleBlock: true,
 
-        fixedFooterBlock:{
-            placeholder: "Footer"
-        },
+        fixedFooterBlock: true,
 
         /**
          * Available Tools list.
@@ -135,7 +215,7 @@
                 onReady: () => {
                     console.log('in ready');
                     const editor = this.$refs.editor.state.editor;
-                    new DragDrop(editor);
+                    //new DragDrop(editor);
                 },
                 data: {
                     "time": 1591362820044,
@@ -284,7 +364,7 @@
                     console.log('hier header');
                     console.log('in ready');
                     //const editor = this.$refs.editor.state.editor;
-                    new DragDrop(editorheader);
+                    //new DragDrop(editorheader);
                 },
                 onChange: function() {
                     console.log('something changed');
@@ -431,7 +511,7 @@
     export default {
         components: {
             CanvasSize,
-            CanvasFont
+            CanvasFont,
         },
         data() {
             return {
@@ -443,6 +523,23 @@
 </script>
 
 <style>
+.demo{}
+.resize-drag {
+    width: 120px;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 1rem;
+    background-color: #29e;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+
+    touch-action: none;
+
+    /* This makes things *much* easier */
+    box-sizing: border-box;
+}
+
     body {
         background-color:hsla(0,0%, 50%,0.2);
     }
