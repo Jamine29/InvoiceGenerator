@@ -38,5 +38,5 @@ export interface OutputData {
   /**
    * Footer block
    */
-  footer: string;
+  //footer: string;
 }

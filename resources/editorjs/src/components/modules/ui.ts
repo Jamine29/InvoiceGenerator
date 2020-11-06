@@ -344,6 +344,7 @@ export default class UI extends Module {
     /**
      * Container for textarea element
      */
+    //const fixedFooterBlockContainer = $.make('div', 'fixed-footer-block-container');
     const fixedFooterBlockContainer = $.make('div', 'fixed-footer-block-container');
 
     /**
@@ -351,19 +352,26 @@ export default class UI extends Module {
      * Did not use dom.ts ($) beacuse it returns HTMLElement,
      * not the required HTMLTextAreaElement
      */
-    const fixedFooterBlock = document.createElement('textarea');
+    //const fixedFooterBlock = document.createElement('textarea');
 
-    fixedFooterBlock.rows = 1;
-    fixedFooterBlock.id = 'fixed-footer-block';
+    const fixedFooterBlock = document.createElement('div');
+
+    //fixedFooterBlock.rows = 1;
+    //fixedFooterBlock.id = 'fixed-footer-block';
+
+    fixedFooterBlock.id = "editor2";
+
     /**
      * If fixedTitleBlock is an object provided by user (instead of boolean)
      * then assigning placeholder prperty from the object
      */
+    /*
     if (typeof this.config.fixedFooterBlock != 'boolean') {
       fixedFooterBlock.placeholder = this.config.fixedFooterBlock.placeholder;
     } else {
       fixedFooterBlock.placeholder = 'Footer';
     }
+    */
 
     /**
      * autosize module is used to chnage size of teatarea on input change

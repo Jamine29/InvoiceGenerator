@@ -121,14 +121,14 @@ export default class Saver extends Module {
     /**
      * FixedFooterBlock text value
      */
-    const footer = fixedFooterBlock.getFooterText();
+    //const footer = fixedFooterBlock.getFooterText();
 
     return {
       time: +new Date(),
       blocks,
       version: VERSION,
       //title,
-      footer,
+      //footer,
     };
   }
 }
