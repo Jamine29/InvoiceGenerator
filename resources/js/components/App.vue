@@ -2,17 +2,22 @@
     <div>
         <CanvasSize />
         <CanvasFont />
-        <div id="editorjs"></div>
+        <button @click="saveData">Save</button>
+        <div id="editor">
+            <div id="editorHeader"></div>
+            <div id="editorBody"></div>
+            <div id="editorFooter"></div>
+        </div>
     </div>
 </template>
 
 <script>
-    /* Font und Size funktioniert nicht*/
     import Header from '@editorjs/header';
     import Marker from '@editorjs/marker';
     import Table from '@editorjs/table';
     import Underline from '@editorjs/underline';
-    import SimpleImage from '@editorjs/simple-image';
+    //import SimpleImage from '@editorjs/simple-image';
+    import SimpleImage from '../../plugins/simpleImage/index.js';
     import RedTextColor from '../../plugins/redTextColor/index.js';
     import DragDrop from 'editorjs-drag-drop';
     import Paragraph from 'editorjs-paragraph-with-alignment';
@@ -20,37 +25,27 @@
     import ColorPlugin from 'editorjs-text-color-plugin';
     import TextAlign from '@canburaks/text-align-editorjs';
     import Strikethrough from '@itech-indrustries/editorjs-strikethrough';
-    import Delimiter from '@editorjs/delimiter';
-    import Spacer from '@veryard/spacer';
-
 
     import CanvasSize from './CanvasSize.vue';
     import CanvasFont from './CanvasFont.vue';
-    //import EditorJS from '@editorjs/editorjs';
-    import EditorJS from '../../editorjs';
-    let editor = new EditorJS({
+    import EditorJS from '@editorjs/editorjs';
+    //import EditorJS from '../../editorjs';
+
+    let editorHeader = new EditorJS({
         readOnly: false,
         /**
          * Create a holder for the Editor and pass its ID
          */
-        holder : 'editorjs',
+        holder : 'editorHeader',
         autofocus: true,
-        /*
-        fixedTitleBlock:{
-            placeholder: "Header"
-        },
-        */
         fixedTitleBlock: true,
-        fixedFooterBlock:{
-            placeholder: "Footer"
-        },
+        fixedFooterBlock:true,
+        inlineToolbar: ['marker', 'bold', 'italic', 'align'],
         /**
          * Available Tools list.
          * Pass Tool's class or Settings object for each Tool you want to use
          */
         tools: {
-            spacer: Spacer,
-            delimiter: Delimiter,
             strikethrough: {
                 class: Strikethrough
             },
@@ -58,7 +53,7 @@
                 class: TextAlign
             },
             color: {
-                class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
+                class: ColorPlugin,
                 config: {
                     colorCollections: ['#FF1300','#EC7878','#9C27B0','#673AB7','#3F51B5','#0070FF','#03A9F4','#00BCD4','#4CAF50','#8BC34A','#CDDC39', '#FFF'],
                     defaultColor: '#FF1300',
@@ -75,13 +70,13 @@
             redTextColor: {
                 class: RedTextColor
             },
+            underline: {
+                class: Underline
+            },
             image: {
                 class: SimpleImage,
                 config: {
                 }
-            },
-            underline: {
-                class: Underline
             },
             header: {
                 class: Header,
@@ -109,330 +104,230 @@
          * Previously saved data that should be rendered
          */
         data: {
-            config: {
-                inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
-                tools: {
-                    align: {
-                        class: RedTextColor
-                    },
-                    image: {
-                        class: SimpleImage,
-                        config: {
-                        }
-                    },
-                    marker: {
-                        class: Marker,
-                        shortcut: 'CMD+SHIFT+M',
-                    },
-                    underline: {
-                        class: Underline
-                    },
-                    header: {
-                        class: Header,
-                        inlineToolbar: ['bold', 'italic', 'underline'],
-                        config: {
-                            placeholder: 'Enter a header',
-                            levels: [2, 3, 4],
-                            defaultLevel: 3
-                        }
-                    },
-                    table: {
-                        class: Table,
-                        inlineToolbar: true,
-                        config: {
-                            rows: 2,
-                            cols: 3,
-                        }
-                    },
-                    paragraph: {
-                        class: Paragraph,
-                        inlineToolbar: true,
+            "time": 1591362820044,
+            "blocks": [
+                {
+                    "type" : "header",
+                    "data" : {
+                        "text" : "Header",
+                        "level" : 2
                     }
                 },
-                onReady: () => {
-                    console.log('in ready');
-                    const editor = this.$refs.editor.state.editor;
-                    new DragDrop(editor);
-                },
-                data: {
-                    "time": 1591362820044,
-                    "blocks": [
-                        {
-                            "type" : "header",
-                            "data" : {
-                                "text" : "Editor.js",
-                                "level" : 2
-                            }
-                        },
-                        {
-                            "type" : "paragraph",
-                            "data" : {
-                                "text" : "Ich bin ein Editor."
-                            }
-                        }
-                    ],
-                    "version" : "2.18.0"
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : "Ich bin der Header."
+                    }
                 }
-            }
+            ],
+            "version" : "2.18.0"
         },
-        onReady: function(){
-            let editorheader = new EditorJS({
-                readOnly: false,
-                /**
-                 * Create a holder for the Editor and pass its ID
-                 */
-                holder : 'editor1',
-                //autofocus: true,
-                fixedTitleBlock: false,
-                fixedFooterBlock: false,
-                /**
-                 * Available Tools list.
-                 * Pass Tool's class or Settings object for each Tool you want to use
-                 */
-                tools: {
-                    align: {
-                        class: RedTextColor
-                    },
-                    image: {
-                        class: SimpleImage,
-                        config: {
-                        }
-                    },
-                    marker: {
-                        class: Marker,
-                        shortcut: 'CMD+SHIFT+M',
-                    },
-                    underline: {
-                        class: Underline
-                    },
-                    header: {
-                        class: Header,
-                        inlineToolbar: ['bold', 'italic', 'underline'],
-                        config: {
-                            placeholder: 'Enter a header',
-                            levels: [2, 3, 4],
-                            defaultLevel: 3
-                        }
-                    },
-                    table: {
-                        class: Table,
-                        inlineToolbar: true,
-                        config: {
-                            rows: 2,
-                            cols: 3,
-                        }
-                    },
-                    paragraph: {
-                        class: Paragraph,
-                        inlineToolbar: true,
-                    }
-                },
-                /**
-                 * Previously saved data that should be rendered
-                 */
-                data: {
-                    config: {
-                        inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
-                        tools: {
-                            align: {
-                                class: RedTextColor
-                            },
-                            image: {
-                                class: SimpleImage,
-                                config: {
-                                }
-                            },
-                            marker: {
-                                class: Marker,
-                                shortcut: 'CMD+SHIFT+M',
-                            },
-                            underline: {
-                                class: Underline
-                            },
-                            header: {
-                                class: Header,
-                                inlineToolbar: ['bold', 'italic', 'underline'],
-                                config: {
-                                    placeholder: 'Enter a header',
-                                    levels: [2, 3, 4],
-                                    defaultLevel: 3
-                                }
-                            },
-                            table: {
-                                class: Table,
-                                inlineToolbar: true,
-                                config: {
-                                    rows: 2,
-                                    cols: 3,
-                                }
-                            },
-                            paragraph: {
-                                class: Paragraph,
-                                inlineToolbar: true,
-                            }
-                        },
-                        data: {
-                            "time": 1591362820044,
-                            "blocks": [
-                                {
-                                    "type" : "header",
-                                    "data" : {
-                                        "text" : "Editor.js",
-                                        "level" : 2
-                                    }
-                                },
-                                {
-                                    "type" : "paragraph",
-                                    "data" : {
-                                        "text" : "Ich bin ein Editor."
-                                    }
-                                }
-                            ],
-                            "version" : "2.18.0"
-                        }
-                    }
-                },
-                onReady: function(){
-                    console.log('hier header');
-                    console.log('in ready');
-                    //const editor = this.$refs.editor.state.editor;
-                    new DragDrop(editorheader);
-                },
-                onChange: function() {
-                    console.log('something changed');
-                }
-            });
-            let editorfooter = new EditorJS({
-                readOnly: false,
-                /**
-                 * Create a holder for the Editor and pass its ID
-                 */
-                holder : 'editor2',
-                autofocus: false,
-                fixedTitleBlock: false,
-                fixedFooterBlock: false,
-                /**
-                 * Available Tools list.
-                 * Pass Tool's class or Settings object for each Tool you want to use
-                 */
-                tools: {
-                    align: {
-                        class: RedTextColor
-                    },
-                    image: {
-                        class: SimpleImage,
-                        config: {
-                        }
-                    },
-                    marker: {
-                        class: Marker,
-                        shortcut: 'CMD+SHIFT+M',
-                    },
-                    underline: {
-                        class: Underline
-                    },
-                    header: {
-                        class: Header,
-                        inlineToolbar: ['bold', 'italic', 'underline'],
-                        config: {
-                            placeholder: 'Enter a header',
-                            levels: [2, 3, 4],
-                            defaultLevel: 3
-                        }
-                    },
-                    table: {
-                        class: Table,
-                        inlineToolbar: true,
-                        config: {
-                            rows: 2,
-                            cols: 3,
-                        }
-                    },
-                    paragraph: {
-                        class: Paragraph,
-                        inlineToolbar: true,
-                    }
-                },
-                /**
-                 * Previously saved data that should be rendered
-                 */
-                data: {
-                    config: {
-                        inlineToolbar: ['link', 'marker', 'bold', 'italic', 'align'],
-                        tools: {
-                            align: {
-                                class: RedTextColor
-                            },
-                            image: {
-                                class: SimpleImage,
-                                config: {
-                                }
-                            },
-                            marker: {
-                                class: Marker,
-                                shortcut: 'CMD+SHIFT+M',
-                            },
-                            underline: {
-                                class: Underline
-                            },
-                            header: {
-                                class: Header,
-                                inlineToolbar: ['bold', 'italic', 'underline'],
-                                config: {
-                                    placeholder: 'Enter a header',
-                                    levels: [2, 3, 4],
-                                    defaultLevel: 3
-                                }
-                            },
-                            table: {
-                                class: Table,
-                                inlineToolbar: true,
-                                config: {
-                                    rows: 2,
-                                    cols: 3,
-                                }
-                            },
-                            paragraph: {
-                                class: Paragraph,
-                                inlineToolbar: true,
-                            }
-                        },
-                        data: {
-                            "time": 1591362820044,
-                            "blocks": [
-                                {
-                                    "type" : "header",
-                                    "data" : {
-                                        "text" : "Editor.js",
-                                        "level" : 2
-                                    }
-                                },
-                                {
-                                    "type" : "paragraph",
-                                    "data" : {
-                                        "text" : "Ich bin ein Editor."
-                                    }
-                                }
-                            ],
-                            "version" : "2.18.0"
-                        }
-                    }
-                },
-                onReady: function(){
-                    console.log('hier footer');
-                    console.log('in ready');
-                    //const editor = this.$refs.editor.state.editor;
-                    new DragDrop(editorfooter);
-                },
-                onChange: function() {
-                    console.log('something changed');
-                }
-            });
+        onReady: () => {
+            console.log('in header ready');
+            new DragDrop(editorHeader);
         },
         onChange: function() {
             console.log('something changed');
         }
     });
+    let editorBody = new EditorJS({
+        readOnly: false,
+        /**
+         * Create a holder for the Editor and pass its ID
+         */
+        holder : 'editorBody',
+        autofocus: true,
+        fixedTitleBlock: true,
+        fixedFooterBlock:true,
+        inlineToolbar: ['marker', 'bold', 'italic', 'align'],
+        /**
+         * Available Tools list.
+         * Pass Tool's class or Settings object for each Tool you want to use
+         */
+        tools: {
+            strikethrough: {
+                class: Strikethrough
+            },
+            textAlign: {
+                class: TextAlign
+            },
+            color: {
+                class: ColorPlugin,
+                config: {
+                    colorCollections: ['#FF1300','#EC7878','#9C27B0','#673AB7','#3F51B5','#0070FF','#03A9F4','#00BCD4','#4CAF50','#8BC34A','#CDDC39', '#FFF'],
+                    defaultColor: '#FF1300',
+                    type: 'text',
+                }
+            },
+            marker: {
+                class: ColorPlugin,
+                config: {
+                    defaultColor: '#FFBF00',
+                    type: 'marker',
+                }
+            },
+            redTextColor: {
+                class: RedTextColor
+            },
+            underline: {
+                class: Underline
+            },
+            image: {
+                class: SimpleImage,
+                config: {
+                }
+            },
+            header: {
+                class: Header,
+                inlineToolbar: ['bold', 'italic', 'underline'],
+                config: {
+                    placeholder: 'Enter a header',
+                    levels: [2, 3, 4],
+                    defaultLevel: 3
+                }
+            },
+            table: {
+                class: Table,
+                inlineToolbar: true,
+                config: {
+                    rows: 2,
+                    cols: 3,
+                }
+            },
+            paragraph: {
+                class: Paragraph,
+                inlineToolbar: true,
+            }
+        },
+        /**
+         * Previously saved data that should be rendered
+         */
+        data: {
+            "time": 1591362820044,
+            "blocks": [
+                {
+                    "type" : "header",
+                    "data" : {
+                        "text" : "Body",
+                        "level" : 2
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : "Ich bin der Body."
+                    }
+                }
+            ],
+            "version" : "2.18.0"
+        },
+        onReady: () => {
+            new DragDrop(editorBody);
+
+        },
+        onChange: function() {
+            console.log('something changed');
+        }
+    });
+    let editorFooter = new EditorJS({
+        readOnly: false,
+        /**
+         * Create a holder for the Editor and pass its ID
+         */
+        holder : 'editorFooter',
+        autofocus: true,
+        fixedTitleBlock: true,
+        fixedFooterBlock:true,
+        inlineToolbar: ['marker', 'bold', 'italic', 'align'],
+        /**
+         * Available Tools list.
+         * Pass Tool's class or Settings object for each Tool you want to use
+         */
+        tools: {
+            strikethrough: {
+                class: Strikethrough
+            },
+            textAlign: {
+                class: TextAlign
+            },
+            color: {
+                class: ColorPlugin,
+                config: {
+                    colorCollections: ['#FF1300','#EC7878','#9C27B0','#673AB7','#3F51B5','#0070FF','#03A9F4','#00BCD4','#4CAF50','#8BC34A','#CDDC39', '#FFF'],
+                    defaultColor: '#FF1300',
+                    type: 'text',
+                }
+            },
+            marker: {
+                class: ColorPlugin,
+                config: {
+                    defaultColor: '#FFBF00',
+                    type: 'marker',
+                }
+            },
+            redTextColor: {
+                class: RedTextColor
+            },
+            underline: {
+                class: Underline
+            },
+            image: {
+                class: SimpleImage,
+                config: {
+                }
+            },
+            header: {
+                class: Header,
+                inlineToolbar: ['bold', 'italic', 'underline'],
+                config: {
+                    placeholder: 'Enter a header',
+                    levels: [2, 3, 4],
+                    defaultLevel: 3
+                }
+            },
+            table: {
+                class: Table,
+                inlineToolbar: true,
+                config: {
+                    rows: 2,
+                    cols: 3,
+                }
+            },
+            paragraph: {
+                class: Paragraph,
+                inlineToolbar: true,
+            }
+        },
+        /**
+         * Previously saved data that should be rendered
+         */
+        data: {
+            "time": 1591362820044,
+            "blocks": [
+                {
+                    "type" : "header",
+                    "data" : {
+                        "text" : "Footer",
+                        "level" : 2
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : "Ich bin der Footer."
+                    }
+                }
+            ],
+            "version" : "2.18.0"
+        },
+        onReady: () => {
+            new DragDrop(editorFooter);
+        },
+        onChange: function() {
+            console.log('something changed');
+        }
+    });
+
     export default {
         components: {
             CanvasSize,
@@ -443,6 +338,17 @@
             }
         },
         methods: {
+            saveData() {
+                console.log(editorHeader);
+                editorHeader.save()
+                    .then((savedData) => {
+                        console.log('data');
+                        console.log(savedData);
+                    })
+                    .catch((error) => {
+                        console.error('Saving error', error);
+                    });
+            }
         }
     }
 </script>
@@ -501,7 +407,7 @@
         background: white;
     }
     .codex-editor__redactor {
-        padding-bottom: 600px !important;
+        /*padding-bottom: 600px !important;*/
     }
     #editorjs {
         width: 650px;

@@ -1,0 +1,47 @@
+.cdx-simple-image {}
+
+.cdx-simple-image .cdx-loader {
+    min-height: 200px;
+}
+
+.cdx-simple-image .cdx-input {
+    margin-top: 10px;
+}
+
+.cdx-simple-image img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+
+.cdx-simple-image__picture {
+    display: flex;
+    /*justify-content: flex-end;*/
+}
+
+.cdx-simple-image__picture--start {
+    justify-content: flex-start;
+}
+
+.cdx-simple-image__picture--center {
+    justify-content: center;
+}
+
+.cdx-simple-image__picture--end {
+    justify-content: flex-end;
+}
+
+/**/
+.cdx-simple-image__picture--small img {
+    width: 50px;
+    height: 50px;
+}
+
+.cdx-simple-image__picture--medium img {
+    width: 100px;
+    height: 100px;
+}
+
+.cdx-simple-image__picture--large img {
+    width: 150px;
+    height: 150px;
+}
