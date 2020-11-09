@@ -357,66 +357,8 @@
     body {
         background-color:hsla(0,0%, 50%,0.2);
     }
-    #vue-editor-js {
-        background-color:hsla(0,0%, 100%,1);
-        /*height: 842px;*/
-        height: 714px;
-        width: 	595px;
-        position: relative;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        padding: 0;
-        box-shadow: 5px 10px 18px #888888;
-        margin-left: 20%;
-    }
-    .ce-toolbar__plus {
-        transform: translate3d(-12px, calc(17px - 50%), 0px) !important;
-    }
-    .codex-editor {
-        padding: 10px 20px;
-        /*height: 842px;*/
-        height: 714px; /* wie kann ich die ausgangsgröße einstellen? */
-    }
-    @media(min-width: 651px) {
-        .codex-editor--narrow .codex-editor__redactor {
-            margin-right: 0px;
-        }
-    }
-    @media(min-width: 651px) {
-        .codex-editor--narrow .ce-toolbar__actions {
-            right: 0px;
-        }
-    }
-    .ce-block__content {
-        margin: 0;
-        max-width: 100%;
-    }
-    /**/
-    .fixed-title-block-container {
-        margin: 0;
-    }
-    .fixed-footer-block-container {
-        margin: 0;
-    }
-    #fixed-footer-block {
-        padding: 0px 20px;
-    }
-    .codex-editor {
-        padding-top: 0 !important;
-        height: auto !important;
-        background: white;
-    }
-    .codex-editor__redactor {
-        /*padding-bottom: 600px !important;*/
-    }
-    #editorjs {
-        width: 650px;
-        margin-left: 206px;
-    }
-    .fixed-title-block-container {
-        background: white;
-    }
-    .fixed-footer-block-container {
-        background: white;
+
+    #editor {
+        background-color: white;
     }
 </style>
