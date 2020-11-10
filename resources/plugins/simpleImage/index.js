@@ -3,6 +3,8 @@
  */
 require('./index.css').toString();
 
+const handleBlockSize  = require('../functions/hangblockSize');
+
 /**
  * SimpleImage Tool for the Editor.js
  * Works only with pasted image URLs and requires no server-side uploader.
@@ -57,7 +59,7 @@ class SimpleImage {
             /**
              * Tool's classes
              */
-            //wrapper: 'cdx-simple-image',
+            wrapper: 'cdx-simple-image',
             imageHolder: 'cdx-simple-image__picture',
         };
 
@@ -84,6 +86,7 @@ class SimpleImage {
             start: data.start !== undefined ? data.start : true,
             center: data.center !== undefined ? data.center : false,
             end: data.end !== undefined ? data.end : false,
+            colWidth: data.colWidth !== undefined ? data.colWidth : 12,
         };
 
         /**
@@ -102,7 +105,6 @@ class SimpleImage {
                 name: 'large',
                 icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">lg</text></svg>`,
             },
-
             {
                 name: 'start',
                 icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">st</text></svg>`,
@@ -114,6 +116,14 @@ class SimpleImage {
             {
                 name: 'end',
                 icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">en</text></svg>`,
+            },
+            {
+                name: 'enlarge',
+                icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">en</text></svg>`,
+            },
+            {
+                name: 'shrink',
+                icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">sh</text></svg>`,
             },
         ];
     }
@@ -206,7 +216,8 @@ class SimpleImage {
             large: {},
             start: {},
             center: {},
-            end: {}
+            end: {},
+            colWidth: {}
         };
     }
 
@@ -345,6 +356,54 @@ class SimpleImage {
         return wrapper;
     };
 
+    /**
+     * Helper for making Elements with attributes
+     *
+     * @param  {string} tagName           - new Element tag name
+     * @param  {Array|string} classNames  - list or name of CSS classname(s)
+     * @param  {object} attributes        - any attributes
+     * @returns {Element}
+     */
+    _make(tagName, classNames = null, attributes = {}) {
+        const el = document.createElement(tagName);
+
+        if (Array.isArray(classNames)) {
+            el.classList.add(...classNames);
+        } else if (classNames) {
+            el.classList.add(classNames);
+        }
+
+        for (const attrName in attributes) {
+            el[attrName] = attributes[attrName];
+        }
+
+        return el;
+    }
+
+    /**
+     * Click on the Settings Button
+     *
+     * @private
+     * @param tune
+     */
+    _toggleTune(tune, el) {
+        this.data[tune] = !this.data[tune];
+        if(tune === "small" || tune === "medium" || tune === "large") {
+            console.log('size')
+            this.handleImageSize(tune, el);
+        }
+        if(tune === "start" || tune === "center" || tune === "end") {
+            console.log('align')
+            this.handleImageAlign(tune, el);
+        }
+        if(tune === "enlarge" || tune === "shrink") {
+            console.log('colwidth')
+            this.data['colWidth'] = handleBlockSize.default.handleColWidth(tune, this.data['colWidth']);
+        }
+
+        this._acceptTuneView();
+    }
+
     handleImageSize(tune, el) {
         const nodes = el.parentElement.childNodes;
         const small = nodes[0];
@@ -408,50 +467,18 @@ class SimpleImage {
     }
 
     /**
-     * Helper for making Elements with attributes
-     *
-     * @param  {string} tagName           - new Element tag name
-     * @param  {Array|string} classNames  - list or name of CSS classname(s)
-     * @param  {object} attributes        - any attributes
-     * @returns {Element}
-     */
-    _make(tagName, classNames = null, attributes = {}) {
-        const el = document.createElement(tagName);
-
-        if (Array.isArray(classNames)) {
-            el.classList.add(...classNames);
-        } else if (classNames) {
-            el.classList.add(classNames);
-        }
-
-        for (const attrName in attributes) {
-            el[attrName] = attributes[attrName];
-        }
-
-        return el;
-    }
-
-    /**
-     * Click on the Settings Button
-     *
-     * @private
-     * @param tune
-     */
-    _toggleTune(tune, el) {
-        this.data[tune] = !this.data[tune];
-        this.handleImageSize(tune, el);
-        this.handleImageAlign(tune, el);
-        this._acceptTuneView();
-    }
-
-    /**
      * Add specified class corresponds with activated tunes
      *
      * @private
      */
     _acceptTuneView() {
         this.settings.forEach(tune => {
-            this.nodes.imageHolder.classList.toggle(this.CSS.imageHolder + '--' + tune.name.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`), !!this.data[tune.name]);
+            if (tune.name === 'shrink' || tune.name === 'enlarge') {
+                handleBlockSize.default.handleColClass(this.nodes.wrapper.parentNode.parentNode.classList, this.data['colWidth']);
+            }
+            else {
+                this.nodes.imageHolder.classList.toggle(this.CSS.imageHolder + '--' + tune.name.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`), !!this.data[tune.name]);
+            }
         });
     }
 }

@@ -24,7 +24,6 @@
         },
         methods: {
             handleCanvasFont() {
-                console.log("hier");
                 document.getElementById("editorjs").style.fontFamily = this.selectedCanvasFont;
             }
         }
@@ -32,7 +31,6 @@
 </script>
 
 <style>
-    /* zu @import informieren (Schrift laden wenn Sie benutzt wird sonst nicht)*/
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');

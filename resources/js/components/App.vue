@@ -355,10 +355,64 @@
 
 <style>
     body {
-        background-color:hsla(0,0%, 50%,0.2);
+        background-color: hsla(0,0%, 50%,0.2);
     }
 
     #editor {
         background-color: white;
+        margin: 0 auto;
+        max-width: 650px;
     }
+
+    /* Editor CSS */
+    #editorHeader {
+        max-width: 650px;
+        margin: 0 auto;
+    }
+    /* .codex-editor__redactor{display: flex;flex-wrap: wrap;flex-direction: row;} */
+    .codex-editor__redactor{}
+    /* .ce-block{width: 100%;padding-left: 0;padding-right: 0;} */
+
+    .ce-block {
+        width: 100%;
+        float: left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .cdx-settings-input {
+        border: 1px solid rgba(201,201,204,.48);
+        -webkit-box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);
+        box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);
+        border-radius: 3px;
+        padding: 3px 8px;
+        outline: none;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .cdx-small {
+        font-size: .6rem
+    }
+    .ce-block__content {
+        max-width: 100%
+    }
+
+    .cdx-settings-button.disabled,.ce-settings__button.disabled {
+        pointer-events: none;
+        opacity: .5
+    }
+
+    .cdx-settings-sidebar {
+        position: absolute;
+        left: 100%;bottom:0;
+        background: #fff;
+        width: 108px;
+        height: 145px;
+        box-shadow: 0 3px 15px -3px rgba(13,20,33,.13);
+        border-radius: 0 4px 4px 0;
+        z-index: 0;
+    }
+    /* Editor CSS - END */
 </style>

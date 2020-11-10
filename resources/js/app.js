@@ -29,5 +29,5 @@ Vue.component('app', require('./components/App.vue').default);
 
 const app = new Vue({
     el: '#app',
-    component: require('./components/Vue1/App.vue')
+    component: require('./components/App.vue')
 });
