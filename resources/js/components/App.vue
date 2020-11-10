@@ -12,7 +12,8 @@
 </template>
 
 <script>
-    import Header from '@editorjs/header';
+    //import Header from '@editorjs/header';
+    import Header from '../../plugins/header/index.js';
     import Marker from '@editorjs/marker';
     import Table from '@editorjs/table';
     import Underline from '@editorjs/underline';

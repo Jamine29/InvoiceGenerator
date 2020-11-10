@@ -19,6 +19,16 @@ const handleBlockSize = {
             }
         }
         classes.add('es-col-' + colWidth);
+    },
+    handleColSettings: {
+        enlarge: {
+            name: 'enlarge',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">en</text></svg>`,
+        },
+        shrink: {
+            name: 'shrink',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">sh</text></svg>`,
+        }
     }
 }
 

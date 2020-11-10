@@ -117,14 +117,8 @@ class SimpleImage {
                 name: 'end',
                 icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">en</text></svg>`,
             },
-            {
-                name: 'enlarge',
-                icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">en</text></svg>`,
-            },
-            {
-                name: 'shrink',
-                icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">sh</text></svg>`,
-            },
+            handleBlockSize.default.handleColSettings.enlarge,
+            handleBlockSize.default.handleColSettings.shrink,
         ];
     }
 
@@ -345,10 +339,14 @@ class SimpleImage {
 
             el.addEventListener('click', () => {
                 this._toggleTune(tune.name, el);
-                el.classList.toggle(this.CSS.settingsButtonActive);
+                if((tune.name !== 'enlarge' && tune.name !== 'shrink')) {
+                    el.classList.toggle(this.CSS.settingsButtonActive);
+                }
             });
 
-            el.classList.toggle(this.CSS.settingsButtonActive, this.data[tune.name]);
+            if((tune.name !== 'enlarge' && tune.name !== 'shrink')) {
+                el.classList.toggle(this.CSS.settingsButtonActive, this.data[tune.name]);
+            }
 
             wrapper.appendChild(el);
         });
@@ -389,15 +387,12 @@ class SimpleImage {
     _toggleTune(tune, el) {
         this.data[tune] = !this.data[tune];
         if(tune === "small" || tune === "medium" || tune === "large") {
-            console.log('size')
             this.handleImageSize(tune, el);
         }
         if(tune === "start" || tune === "center" || tune === "end") {
-            console.log('align')
             this.handleImageAlign(tune, el);
         }
         if(tune === "enlarge" || tune === "shrink") {
-            console.log('colwidth')
             this.data['colWidth'] = handleBlockSize.default.handleColWidth(tune, this.data['colWidth']);
         }
 
