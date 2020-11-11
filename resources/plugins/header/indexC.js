@@ -75,7 +75,10 @@ class Header {
          *
          * @type {HTMLElement[]}
          */
-        this.settingsButtons = [];
+        this.settingsButtons = [
+            handleBlockSize.default.handleColSettings.enlarge,
+            handleBlockSize.default.handleColSettings.shrink,
+        ];
 
         /**
          * Main Block wrapper
@@ -84,14 +87,6 @@ class Header {
          * @private
          */
         this._element = this.getTag();
-
-        /**
-         * Available Header settings
-         */
-        this.settings = [
-            handleBlockSize.default.handleColSettings.enlarge,
-            handleBlockSize.default.handleColSettings.shrink,
-        ];
     }
 
     /**
@@ -111,7 +106,6 @@ class Header {
 
         newData.text = data.text || '';
         newData.level = parseInt(data.level) || this.defaultLevel.number;
-        newData.colWidth = data.colWidth !== undefined ? data.colWidth : 12;
 
         return newData;
     }
@@ -123,14 +117,7 @@ class Header {
      * @public
      */
     render() {
-        console.log('header render')
         return this._element;
-    }
-
-    // https://editorjs.io/tools-api
-    /* Called after Block contents is added to the page */
-    rendered() {
-        handleBlockSize.default.handleColClass(this._element.parentNode.parentNode.classList, this.data['colWidth']);
     }
 
     /**
@@ -187,31 +174,7 @@ class Header {
             this.settingsButtons.push(selectTypeButton);
         });
 
-        /*Add settings*/
-        this.settings.forEach(tune => {
-            const el = document.createElement('div');
-
-            el.classList.add(this._CSS.settingsButton);
-            el.innerHTML = tune.icon;
-
-            el.addEventListener('click', () => {
-
-                this.setColWidth(tune.name);
-            });
-
-            holder.appendChild(el);
-
-            this.settingsButtons.push(el);
-        });
-
         return holder;
-    }
-
-    setColWidth(tune) {
-        let col = this._data['colWidth'];
-        let value = handleBlockSize.default.handleColWidth(tune, col);
-        handleBlockSize.default.handleColClass(this._element.parentNode.parentNode.classList, value);
-        this.data['colWidth'] = value;
     }
 
     /**
@@ -434,7 +397,7 @@ class Header {
             if (userSpecified) {
                 return userSpecified;
             } else {
-                //console.warn('(ง\'̀-\'́)ง Heading Tool: the default level specified was not found in available levels');
+                console.warn('(ง\'̀-\'́)ง Heading Tool: the default level specified was not found in available levels');
             }
         }
 

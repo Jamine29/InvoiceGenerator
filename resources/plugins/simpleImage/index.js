@@ -131,6 +131,7 @@ class SimpleImage {
      * @public
      */
     render() {
+        console.log('in render img');
         const wrapper = this._make('div', [this.CSS.baseClass, this.CSS.wrapper]),
             loader = this._make('div', this.CSS.loading),
             imageHolder = this._make('div', this.CSS.imageHolder),
@@ -147,7 +148,6 @@ class SimpleImage {
             imageHolder.appendChild(image);
             wrapper.appendChild(imageHolder);
             loader.remove();
-            console.log('onload');
             this._acceptTuneView();
         };
 
@@ -163,12 +163,19 @@ class SimpleImage {
         return wrapper;
     }
 
+    // https://editorjs.io/tools-api
+    /* Called after Block contents is added to the page */
+    rendered() {
+        handleBlockSize.default.handleColClass(this.nodes.wrapper.parentNode.parentNode.classList, this.data['colWidth']);
+    }
+
     /**
      * @public
      * @param {Element} blockContent - Tool's wrapper
      * @returns {SimpleImageData}
      */
     save(blockContent) {
+        //console.log('in save');
         const image = blockContent.querySelector('img');
 
         if (!image) {
@@ -181,6 +188,7 @@ class SimpleImage {
     }
 
     validate(savedData) {
+        //console.log('in validate');
         if(!savedData.url.trim()) {
             return false;
         }
@@ -289,6 +297,14 @@ class SimpleImage {
      * @returns {SimpleImageData}
      */
     get data() {
+        console.log('in get data');
+        if(this.nodes.wrapper !== null) {
+            console.log(this.nodes.wrapper.parentNode.parentNode.classList);
+            //handleBlockSize.default.handleColClass(this.nodes.wrapper.parentNode.parentNode.classList, 2);
+        }
+        else {
+            console.log('wrappe is null')
+        }
         return this._data;
     }
 
@@ -298,6 +314,8 @@ class SimpleImage {
      * @param {SimpleImageData} data
      */
     set data(data) {
+        console.log('set data');
+
         this._data = Object.assign({}, this.data, data);
 
         if (this.nodes.image) {
@@ -329,6 +347,7 @@ class SimpleImage {
      * @returns {HTMLDivElement}
      */
     renderSettings() {
+        console.log('in renderSettings');
         const wrapper = document.createElement('div');
 
         this.settings.forEach(tune => {
@@ -467,6 +486,8 @@ class SimpleImage {
      * @private
      */
     _acceptTuneView() {
+        console.log('in acc')
+        console.log(this.nodes)
         this.settings.forEach(tune => {
             if (tune.name === 'shrink' || tune.name === 'enlarge') {
                 handleBlockSize.default.handleColClass(this.nodes.wrapper.parentNode.parentNode.classList, this.data['colWidth']);

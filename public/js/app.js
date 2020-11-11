@@ -2175,12 +2175,30 @@ var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_13___default.
       "type": "header",
       "data": {
         "text": "Header",
-        "level": 2
+        "level": 2,
+        "colWidth": 4
       }
     }, {
-      "type": "paragraph",
+      "type": "image",
       "data": {
-        "text": "Ich bin der Header."
+        "center": false,
+        "colWidth": 4,
+        "end": false,
+        "large": false,
+        "medium": false,
+        "small": true,
+        "start": true,
+        "stretched": false,
+        "url": "data:image/jpeg;base64,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",
+        "withBackground": false,
+        "withBorder": false
+      }
+    }, {
+      "type": "header",
+      "data": {
+        "text": "Header",
+        "level": 2,
+        "colWidth": 4
       }
     }],
     "version": "2.18.0"
@@ -7003,7 +7021,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/**\n * Plugin styles\n */\n.ce-header {\n    padding: 1em 0;\n    margin: 0;\n    margin-bottom: -0.9em;\n    line-height: 1.5em;\n    outline: none;\n}\n\n.ce-header p,\n.ce-header div{\n    padding: 0 !important;\n    margin: 0 !important;\n}\n\n/**\n * Styles for Plugin icon in Toolbar\n */\n.ce-header__icon {}\n\n.ce-header[contentEditable=true][data-placeholder]::before{\n    position: absolute;\n    content: attr(data-placeholder);\n    color: #707684;\n    font-weight: normal;\n    display: none;\n}\n\n.ce-header[contentEditable=true][data-placeholder]:empty::before {\n    display: block;\n}\n\n.ce-header[contentEditable=true][data-placeholder]:empty:focus::before {\n    display: none;\n}\n", ""]);
+exports.push([module.i, "/**\n * Plugin styles\n */\n.ce-header {\n    padding: 1em 0;\n    margin: 0;\n    margin-bottom: -0.9em;\n    line-height: 1.5em;\n    outline: none;\n}\n\n.ce-header p,\n.ce-header div{\n    padding: 0 !important;\n    margin: 0 !important;\n}\n\n/**\n * Styles for Plugin icon in Toolbar\n */\n.ce-header__icon {}\n\n.ce-header[contentEditable=true][data-placeholder]::before{\n    position: absolute;\n    content: attr(data-placeholder);\n    color: #707684;\n    font-weight: normal;\n    display: none;\n}\n\n.ce-header[contentEditable=true][data-placeholder]:empty::before {\n    display: block;\n}\n\n.ce-header[contentEditable=true][data-placeholder]:empty:focus::before {\n    display: none;\n}\n\n/* CSS for columns*/\n.es-col-1 {\n    flex: 0 0 8.333333%;\n    max-width: 8.333333%;\n}\n\n.es-col-2 {\n    flex: 0 0 16.666667%;\n    max-width: 16.666667%;\n}\n\n.es-col-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n\n.es-col-4 {\n    flex: 0 0 33.333333%;\n    max-width: 33.333333%;\n}\n\n.es-col-5 {\n    flex: 0 0 41.666667%;\n    max-width: 41.666667%;\n}\n\n.es-col-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n\n.es-col-7 {\n    flex: 0 0 58.333333%;\n    max-width: 58.333333%;\n}\n\n.es-col-8 {\n    flex: 0 0 66.666667%;\n    max-width: 66.666667%;\n}\n\n.es-col-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n\n.es-col-10 {\n    flex: 0 0 83.333333%;\n    max-width: 83.333333%;\n}\n\n.es-col-11 {\n    flex: 0 0 91.666667%;\n    max-width: 91.666667%;\n}\n\n.es-col-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n\n/* End CSS for columns*/\n", ""]);
 
 // exports
 
@@ -51923,7 +51941,7 @@ var Header = /*#__PURE__*/function () {
      * @type {HTMLElement[]}
      */
 
-    this.settingsButtons = [handleBlockSize["default"].handleColSettings.enlarge, handleBlockSize["default"].handleColSettings.shrink];
+    this.settingsButtons = [];
     /**
      * Main Block wrapper
      *
@@ -51932,6 +51950,11 @@ var Header = /*#__PURE__*/function () {
      */
 
     this._element = this.getTag();
+    /**
+     * Available Header settings
+     */
+
+    this.settings = [handleBlockSize["default"].handleColSettings.enlarge, handleBlockSize["default"].handleColSettings.shrink];
   }
   /**
    * Normalize input data
@@ -51954,6 +51977,7 @@ var Header = /*#__PURE__*/function () {
 
       newData.text = data.text || '';
       newData.level = parseInt(data.level) || this.defaultLevel.number;
+      newData.colWidth = data.colWidth !== undefined ? data.colWidth : 12;
       return newData;
     }
     /**
@@ -51966,7 +51990,16 @@ var Header = /*#__PURE__*/function () {
   }, {
     key: "render",
     value: function render() {
+      console.log('header render');
       return this._element;
+    } // https://editorjs.io/tools-api
+
+    /* Called after Block contents is added to the page */
+
+  }, {
+    key: "rendered",
+    value: function rendered() {
+      handleBlockSize["default"].handleColClass(this._element.parentNode.parentNode.classList, this.data['colWidth']);
     }
     /**
      * Create Block's settings block
@@ -52026,7 +52059,28 @@ var Header = /*#__PURE__*/function () {
 
         _this.settingsButtons.push(selectTypeButton);
       });
+      /*Add settings*/
+
+      this.settings.forEach(function (tune) {
+        var el = document.createElement('div');
+        el.classList.add(_this._CSS.settingsButton);
+        el.innerHTML = tune.icon;
+        el.addEventListener('click', function () {
+          _this.setColWidth(tune.name);
+        });
+        holder.appendChild(el);
+
+        _this.settingsButtons.push(el);
+      });
       return holder;
+    }
+  }, {
+    key: "setColWidth",
+    value: function setColWidth(tune) {
+      var col = this._data['colWidth'];
+      var value = handleBlockSize["default"].handleColWidth(tune, col);
+      handleBlockSize["default"].handleColClass(this._element.parentNode.parentNode.classList, value);
+      this.data['colWidth'] = value;
     }
     /**
      * Callback for Block's settings buttons
@@ -52309,8 +52363,7 @@ var Header = /*#__PURE__*/function () {
 
         if (userSpecified) {
           return userSpecified;
-        } else {
-          console.warn('(ง\'̀-\'́)ง Heading Tool: the default level specified was not found in available levels');
+        } else {//console.warn('(ง\'̀-\'́)ง Heading Tool: the default level specified was not found in available levels');
         }
       }
       /**
@@ -52755,6 +52808,8 @@ var SimpleImage = /*#__PURE__*/function () {
     value: function render() {
       var _this = this;
 
+      console.log('in render img');
+
       var wrapper = this._make('div', [this.CSS.baseClass, this.CSS.wrapper]),
           loader = this._make('div', this.CSS.loading),
           imageHolder = this._make('div', this.CSS.imageHolder),
@@ -52771,7 +52826,6 @@ var SimpleImage = /*#__PURE__*/function () {
         imageHolder.appendChild(image);
         wrapper.appendChild(imageHolder);
         loader.remove();
-        console.log('onload');
 
         _this._acceptTuneView();
       };
@@ -52785,6 +52839,14 @@ var SimpleImage = /*#__PURE__*/function () {
       this.nodes.wrapper = wrapper;
       this.nodes.image = image;
       return wrapper;
+    } // https://editorjs.io/tools-api
+
+    /* Called after Block contents is added to the page */
+
+  }, {
+    key: "rendered",
+    value: function rendered() {
+      handleBlockSize["default"].handleColClass(this.nodes.wrapper.parentNode.parentNode.classList, this.data['colWidth']);
     }
     /**
      * @public
@@ -52795,6 +52857,7 @@ var SimpleImage = /*#__PURE__*/function () {
   }, {
     key: "save",
     value: function save(blockContent) {
+      //console.log('in save');
       var image = blockContent.querySelector('img');
 
       if (!image) {
@@ -52808,6 +52871,7 @@ var SimpleImage = /*#__PURE__*/function () {
   }, {
     key: "validate",
     value: function validate(savedData) {
+      //console.log('in validate');
       if (!savedData.url.trim()) {
         return false;
       }
@@ -52905,6 +52969,7 @@ var SimpleImage = /*#__PURE__*/function () {
     value: function renderSettings() {
       var _this3 = this;
 
+      console.log('in renderSettings');
       var wrapper = document.createElement('div');
       this.settings.forEach(function (tune) {
         var el = document.createElement('div');
@@ -53053,6 +53118,8 @@ var SimpleImage = /*#__PURE__*/function () {
     value: function _acceptTuneView() {
       var _this4 = this;
 
+      console.log('in acc');
+      console.log(this.nodes);
       this.settings.forEach(function (tune) {
         if (tune.name === 'shrink' || tune.name === 'enlarge') {
           handleBlockSize["default"].handleColClass(_this4.nodes.wrapper.parentNode.parentNode.classList, _this4.data['colWidth']);
@@ -53066,6 +53133,14 @@ var SimpleImage = /*#__PURE__*/function () {
   }, {
     key: "data",
     get: function get() {
+      console.log('in get data');
+
+      if (this.nodes.wrapper !== null) {
+        console.log(this.nodes.wrapper.parentNode.parentNode.classList); //handleBlockSize.default.handleColClass(this.nodes.wrapper.parentNode.parentNode.classList, 2);
+      } else {
+        console.log('wrappe is null');
+      }
+
       return this._data;
     }
     /**
@@ -53075,6 +53150,7 @@ var SimpleImage = /*#__PURE__*/function () {
      */
     ,
     set: function set(data) {
+      console.log('set data');
       this._data = Object.assign({}, this.data, data);
 
       if (this.nodes.image) {
