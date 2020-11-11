@@ -14,18 +14,19 @@
 <script>
     //import SimpleImage from '@editorjs/simple-image';
     //import Header from '@editorjs/header';
-    import TextAlign from '@canburaks/text-align-editorjs';
     //import SimpleImage from '@editorjs/simple-image';
     //import Paragraph from 'editorjs-paragraph-with-alignment';
     import Marker from '@editorjs/marker';
+    //const Paragraph = require('@editorjs/paragraph');
 
-    import ColorPlugin from 'editorjs-text-color-plugin';
-    import Strikethrough from '@itech-indrustries/editorjs-strikethrough';
+    // hat einen Bug
+    import TextAlign from '@canburaks/text-align-editorjs';
     import RedTextColor from '../../plugins/redTextColor/index.js';
+    import ColorPlugin from 'editorjs-text-color-plugin';
 
+    import Strikethrough from '@itech-indrustries/editorjs-strikethrough';
     import Header from '../../plugins/header/index.js';
     import Paragraph from '../../plugins/paragraph/index.js';
-    //const Paragraph = require('@editorjs/paragraph');
     import Table from '@editorjs/table';
     import Underline from '@editorjs/underline';
     import SimpleImage from '../../plugins/simpleImage/index.js';
@@ -109,6 +110,7 @@
         data: {
             "time": 1591362820044,
             "blocks": [
+                /*
                 {
                     "type" : "header",
                     "data" : {
@@ -117,11 +119,12 @@
                         "colWidth": 4
                     }
                 },
+                */
                 {
                     "type" : "image",
                     "data" : {
                         "center": true,
-                        "colWidth": 4,
+                        "colWidth": 12,
                         "end": false,
                         "large": false,
                         "medium": true,
@@ -133,11 +136,12 @@
                         "withBorder": false,
                     }
                 },
+                /*
                 {
                     "type" : "header",
                     "data" : {
                         "text" : "Header",
-                        "level" : 2,
+                        "level" : 12,
                         "colWidth": 4
                     }
                 },
@@ -145,16 +149,19 @@
                     "type" : "paragraph",
                     "data" : {
                         "text" : "Albert Einstein (geboren am 14. März 1879 in Ulm, Württemberg, Deutsches Reich; gestorben am 18. April 1955 in Princeton, New Jersey, Vereinigte Staaten) war ein deutscher Physiker mit Schweizer und US-amerikanischer Staatsbürgerschaft. Er gilt als einer der bedeutendsten theoretischen Physiker der Wissenschaftsgeschichte[1] und weltweit als bekanntester Wissenschaftler der Neuzeit. Seine Forschungen zur Struktur von Materie, Raum und Zeit sowie zum Wesen der Gravitation veränderten maßgeblich das zuvor geltende newtonsche Weltbild.",
-                        "colWidth": 6
+                        "colWidth": 6,
+                        alignment: "left"
                     }
                 },
                 {
                     "type" : "paragraph",
                     "data" : {
                         "text" : "Alan Mathison Turing (* 23. Juni 1912 in London; † 7. Juni 1954 in Wilmslow, Cheshire) war ein britischer Logiker, Mathematiker, Kryptoanalytiker und Informatiker. Er gilt heute als einer der einflussreichsten Theoretiker der frühen Computerentwicklung und Informatik. Turing schuf einen großen Teil der theoretischen Grundlagen für die moderne Informations- und Computertechnologie. Als richtungsweisend erwiesen sich auch seine Beiträge zur theoretischen Biologie.",
-                        "colWidth": 6
+                        "colWidth": 6,
+                        alignment: "right"
                     }
                 }
+                */
             ],
             "version" : "2.18.0"
         },

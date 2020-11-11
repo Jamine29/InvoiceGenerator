@@ -29,7 +29,7 @@ module.exports = (env, argv) => {
 
   return {
     entry: {
-      editor: ['@babel/polyfill/noConflict', './src/codex.ts'],
+      editor: ['@babel/polyfill/noConflict', './table/codex.ts'],
     },
 
     output: {
