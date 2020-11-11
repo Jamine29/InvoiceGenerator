@@ -1,13 +1,15 @@
 /* tc - project's prefix*/
 
 .tc-toolbar {
-  background: #368be6;
+    background: #368be6;
 
-  &--hidden {
+}
+
+.tc-toolbar--hidden {
     visibility: hidden;
-  }
+}
 
-  &--hor {
+.tc-toolbar--hor {
     width: 100%;
     height: 21px;
     display: flex;
@@ -17,9 +19,9 @@
     left: 0;
     top: 1px;
     z-index: 100;
-  }
+}
 
-  &--ver {
+.tc-toolbar--ver {
     height: 100%;
     width: 21px;
     display: flex;
@@ -29,33 +31,28 @@
     top: 0;
     left: -1px;
     z-index: 100;
-  }
+}
 
-  &__plus {
+.tc-toolbar__plus {
     height: 21px;
     width: 21px;
     margin-top: 0;
+}
 
-    &--hor {
-      margin-left: -10px;
-    }
+.tc-toolbar__plus--hor {
+    margin-left: -10px;
+}
 
-    &--ver {
-      margin-top: -10px;
-    }
-  }
+.tc-toolbar__plus--ver {
+    margin-top: -10px;
+}
 
-  &__shine-line {
+.tc-toolbar__shine-line--hor {
+    min-height: 1px;
+    width: 100%;
+}
 
-    &--hor {
-      min-height: 1px;
-      width: 100%;
-    }
-
-    &--ver {
-      min-width: 1px;
-      height: 100%;
-    }
-  }
-
+.tc-toolbar__shine-line--ver {
+    min-width: 1px;
+    height: 100%;
 }

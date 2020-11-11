@@ -1,5 +1,4 @@
-import './styles/border-toolbar.pcss';
-import svgPlusButton from './img/plus.svg';
+import './styles/border-toolbar.css';
 import {create} from './documentUtils';
 
 const CSS = {
@@ -65,7 +64,7 @@ class BorderToolBar {
   _generatePlusButton() {
     const button = create('div', [CSS.plusButton]);
 
-    button.innerHTML = svgPlusButton;
+    button.innerHTML = '<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#388AE5"/><path fill="#FFF" d="M10.9 9.1h3.7a.9.9 0 1 1 0 1.8h-3.7v3.7a.9.9 0 1 1-1.8 0v-3.7H5.4a.9.9 0 0 1 0-1.8h3.7V5.4a.9.9 0 0 1 1.8 0v3.7z"/></svg>';
     button.addEventListener('click', (event) => {
       event.stopPropagation();
       const e = new CustomEvent('click', {'detail': {'x': event.pageX, 'y': event.pageY}, 'bubbles': true});

@@ -16,18 +16,21 @@
     //import Header from '@editorjs/header';
     //import SimpleImage from '@editorjs/simple-image';
     //import Paragraph from 'editorjs-paragraph-with-alignment';
-    import Marker from '@editorjs/marker';
+    //import Marker from '@editorjs/marker';
     //const Paragraph = require('@editorjs/paragraph');
+    //import Table from '@editorjs/table';
+    //import Table from '@editorjs/table';
 
-    // hat einen Bug
+    // haben Bugs
     import TextAlign from '@canburaks/text-align-editorjs';
     import RedTextColor from '../../plugins/redTextColor/index.js';
     import ColorPlugin from 'editorjs-text-color-plugin';
+    //
 
     import Strikethrough from '@itech-indrustries/editorjs-strikethrough';
     import Header from '../../plugins/header/index.js';
     import Paragraph from '../../plugins/paragraph/index.js';
-    import Table from '@editorjs/table';
+    import Table from '../../plugins/table/plugin.js';
     import Underline from '@editorjs/underline';
     import SimpleImage from '../../plugins/simpleImage/index.js';
     import DragDrop from 'editorjs-drag-drop';
