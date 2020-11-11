@@ -1,39 +1,57 @@
-/**
- * Plugin styles
- */
-.ce-header {
-    padding: 1em 0;
-    margin: 0;
-    margin-bottom: -0.9em;
-    line-height: 1.5em;
+.ce-paragraph {
+    line-height: 1.6em;
     outline: none;
 }
-
-.ce-header p,
-.ce-header div{
-    padding: 0 !important;
-    margin: 0 !important;
+.ce-paragraph--right {
+    text-align: right;
+}
+.ce-paragraph--center {
+    text-align: center;
+}
+.ce-paragraph--left {
+    text-align: left;
 }
 
-/**
- * Styles for Plugin icon in Toolbar
- */
-.ce-header__icon {}
-
-.ce-header[contentEditable=true][data-placeholder]::before{
-    position: absolute;
+.ce-paragraph[data-placeholder]:empty::before{
     content: attr(data-placeholder);
     color: #707684;
     font-weight: normal;
-    display: none;
+    opacity: 0;
 }
 
-.ce-header[contentEditable=true][data-placeholder]:empty::before {
-    display: block;
+/** Show placeholder at the first paragraph if Editor is empty */
+.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before {
+    opacity: 1;
 }
 
-.ce-header[contentEditable=true][data-placeholder]:empty:focus::before {
-    display: none;
+.codex-editor--toolbox-opened .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before,
+.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty:focus::before {
+    opacity: 0;
+}
+
+.ce-paragraph p:first-of-type{
+    margin-top: 0;
+}
+
+.ce-paragraph p:last-of-type{
+    margin-bottom: 0;
+}
+
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
 }
 
 /* CSS for columns https://github.com/oodeveloper/editorjs-multicolumn*/

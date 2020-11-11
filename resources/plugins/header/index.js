@@ -123,7 +123,6 @@ class Header {
      * @public
      */
     render() {
-        console.log('header render')
         return this._element;
     }
 
