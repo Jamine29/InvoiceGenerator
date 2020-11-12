@@ -1,6 +1,6 @@
 import './styles/table-constructor.css';
 import {create, getCoords, getSideByCoords} from './documentUtils';
-import {HorizontalBorderToolBar, VerticalBorderToolBar} from './borderToolBar';
+//import {HorizontalBorderToolBar, VerticalBorderToolBar} from './borderToolBar';
 import {Table} from './table';
 
 const CSS = {
@@ -32,21 +32,6 @@ export class TableConstructor {
 
     /** creating container around table */
     this._container = create('div', [CSS.editor, api.styles.block], null, [this._table.htmlElement]);
-
-    /** creating ToolBars */
-    this._verticalToolBar = new VerticalBorderToolBar();
-    this._horizontalToolBar = new HorizontalBorderToolBar();
-    this._table.htmlElement.appendChild(this._horizontalToolBar.htmlElement);
-    this._table.htmlElement.appendChild(this._verticalToolBar.htmlElement);
-
-    /** Activated elements */
-    this._hoveredCell = null;
-    this._activatedToolBar = null;
-    this._hoveredCellSide = null;
-
-    /** Timers */
-    this._plusButDelay = null;
-    this._toolbarShowDelay = null;
 
     if (!this.readOnly) {
       this._hangEvents();
@@ -122,171 +107,12 @@ export class TableConstructor {
   /**
    * @private
    *
-   * Show ToolBar
-   * @param {BorderToolBar} toolBar - which toolbar to show
-   * @param {number} coord - where show. x or y depending on the grade of the toolbar
-   */
-  _showToolBar(toolBar, coord) {
-    this._hideToolBar();
-    this._activatedToolBar = toolBar;
-    toolBar.showIn(coord);
-  }
-
-  /**
-   * @private
-   *
-   * Hide all of toolbars
-   */
-  _hideToolBar() {
-    if (this._activatedToolBar !== null) {
-      this._activatedToolBar.hide();
-    }
-  }
-
-  /**
-   * @private
-   *
    * hang necessary events
    */
   _hangEvents() {
-    this._container.addEventListener('mouseInActivatingArea', (event) => {
-      this._toolbarCalling(event);
-    });
-
-    this._container.addEventListener('click', (event) => {
-      this._clickToolbar(event);
-    });
-
-    this._container.addEventListener('input', () => {
-      this._hideToolBar();
-    });
-
     this._container.addEventListener('keydown', (event) => {
       this._containerKeydown(event);
     });
-
-    this._container.addEventListener('mouseout', (event) => {
-      this._leaveDetectArea(event);
-    });
-
-    this._container.addEventListener('mouseover', (event) => {
-      this._mouseEnterInDetectArea(event);
-    });
-  }
-
-  /**
-   * @private
-   *
-   * detects a mouseenter on a special area
-   * @param {MouseEvent} event
-   */
-  _mouseInActivatingAreaListener(event) {
-    this._hoveredCellSide = event.detail.side;
-    const areaCoords = getCoords(event.target);
-    const containerCoords = getCoords(this._table.htmlElement);
-
-    this._hoveredCell = event.target.closest('TD');
-
-    if (this._hoveredCell === null) {
-      const paddingContainer = 11;
-      this._hoveredCell = this._container;
-      areaCoords.x1 += paddingContainer;
-      areaCoords.y1 += paddingContainer;
-      areaCoords.x2 -= paddingContainer;
-      areaCoords.y2 -= paddingContainer;
-    }
-
-    if (this._hoveredCellSide === 'top') {
-      this._showToolBar(this._horizontalToolBar, areaCoords.y1 - containerCoords.y1 - 2);
-    }
-    if (this._hoveredCellSide === 'bottom') {
-      this._showToolBar(this._horizontalToolBar, areaCoords.y2 - containerCoords.y1 - 1);
-    }
-    if (this._hoveredCellSide === 'left') {
-      this._showToolBar(this._verticalToolBar, areaCoords.x1 - containerCoords.x1 - 2);
-    }
-    if (this._hoveredCellSide === 'right') {
-      this._showToolBar(this._verticalToolBar, areaCoords.x2 - containerCoords.x1 - 1);
-    }
-  }
-
-  /**
-   * @private
-   *
-   * Checks elem is toolbar
-   * @param {HTMLElement} elem - element
-   * @return {boolean}
-   */
-  _isToolbar(elem) {
-    return !!(elem.closest('.' + CSS.toolBarHor) || elem.closest('.' + CSS.toolBarVer));
-  }
-
-  /**
-   * @private
-   *
-   * Hide toolbar, if mouse left area
-   * @param {MouseEvent} event
-   */
-  _leaveDetectArea(event) {
-    if (this._isToolbar(event.relatedTarget)) {
-      return;
-    }
-    clearTimeout(this._toolbarShowDelay);
-    this._hideToolBar();
-  }
-
-  /**
-   * @private
-   *
-   * Show toolbar when mouse in activation area
-   * Showing
-   * @param {MouseEvent} event
-   */
-  _toolbarCalling(event) {
-    if (this._isToolbar(event.target)) {
-      return;
-    }
-    clearTimeout(this._toolbarShowDelay);
-    this._toolbarShowDelay = setTimeout(() => {
-      this._mouseInActivatingAreaListener(event);
-    }, 125);
-  }
-
-  /**
-   * @private
-   *
-   * handling clicks on toolbars
-   * @param {MouseEvent} event
-   */
-  _clickToolbar(event) {
-    if (!this._isToolbar(event.target)) {
-      return;
-    }
-    let typeCoord;
-
-    if (this._activatedToolBar === this._horizontalToolBar) {
-      this._addRow();
-      typeCoord = 'y';
-    } else {
-      this._addColumn();
-      typeCoord = 'x';
-    }
-    /** If event has transmitted data (coords of mouse) */
-    const detailHasData = isNaN(event.detail) && event.detail !== null;
-
-    if (detailHasData) {
-      const containerCoords = getCoords(this._table.htmlElement);
-      let coord;
-
-      if (typeCoord === 'x') {
-        coord = event.detail.x - containerCoords.x1;
-      } else {
-        coord = event.detail.y - containerCoords.y1;
-      }
-      this._delayAddButtonForMultiClickingNearMouse(coord);
-    } else {
-      this._hideToolBar();
-    }
   }
 
   /**
@@ -299,80 +125,6 @@ export class TableConstructor {
     if (event.keyCode === 13) {
       this._containerEnterPressed(event);
     }
-  }
-
-  /**
-   * @private
-   *
-   * Leaves the PlusButton active under mouse
-   * The timer gives time to press the button again, before it disappears.
-   * While the button is being pressed, the timer will be reset
-   * @param {number} coord - coords of mouse. x or y depending on the grade of the toolbar
-   */
-  _delayAddButtonForMultiClickingNearMouse(coord) {
-    this._showToolBar(this._activatedToolBar, coord);
-    this._activatedToolBar.hideLine();
-    clearTimeout(this._plusButDelay);
-    this._plusButDelay = setTimeout(() => {
-      this._hideToolBar();
-    }, 500);
-  }
-
-  /**
-   * @private
-   *
-   * Check if the addition is initiated by the container and which side
-   * @returns {number} - -1 for left or top; 0 for bottom or right; 1 if not container
-   */
-  _getHoveredSideOfContainer() {
-    if (this._hoveredCell === this._container) {
-      return this._isBottomOrRight() ? 0 : -1;
-    }
-    return 1;
-  }
-
-  /**
-   * @private
-   *
-   * check if hovered cell side is bottom or right. (lefter in array of cells or rows than hovered cell)
-   * @returns {boolean}
-   */
-  _isBottomOrRight() {
-    return this._hoveredCellSide === 'bottom' || this._hoveredCellSide === 'right';
-  }
-
-  /**
-   * Adds row in table
-   * @private
-   */
-  _addRow() {
-    const indicativeRow = this._hoveredCell.closest('TR');
-    let index = this._getHoveredSideOfContainer();
-
-    if (index === 1) {
-      index = indicativeRow.sectionRowIndex;
-      // if inserting after hovered cell
-      index = index + this._isBottomOrRight();
-    }
-
-    this._table.addRow(index);
-  }
-
-  /**
-   * @private
-   *
-   * Adds column in table
-   */
-  _addColumn() {
-    let index = this._getHoveredSideOfContainer();
-
-    if (index === 1) {
-      index = this._hoveredCell.cellIndex;
-      // if inserting after hovered cell
-      index = index + this._isBottomOrRight();
-    }
-
-    this._table.addColumn(index);
   }
 
   /**
@@ -396,21 +148,64 @@ export class TableConstructor {
     newstr.cells[0].click();
   }
 
-  /**
-   * @private
-   *
-   * When the mouse enters the detection area
-   * @param {MouseEvent} event
-   */
-  _mouseEnterInDetectArea(event) {
-    const coords = getCoords(this._container);
-    let side = getSideByCoords(coords, event.pageX, event.pageY);
+    /* Start Methods to add a column or row */
 
-    event.target.dispatchEvent(new CustomEvent('mouseInActivatingArea', {
-      'detail': {
-        'side': side
-      },
-      'bubbles': true
-    }));
-  }
+    /**
+     * @private
+     *
+     * Check if the addition is initiated by the container and which side
+     * @returns {number} - -1 for left or top; 0 for bottom or right; 1 if not container
+     */
+    _getHoveredSideOfContainer() {
+        if (this._hoveredCell === this._container) {
+            return this._isBottomOrRight() ? 0 : -1;
+        }
+        return 1;
+    }
+
+    /**
+     * @private
+     *
+     * check if hovered cell side is bottom or right. (lefter in array of cells or rows than hovered cell)
+     * @returns {boolean}
+     */
+    _isBottomOrRight() {
+        return this._hoveredCellSide === 'bottom' || this._hoveredCellSide === 'right';
+    }
+
+    /**
+     * Adds row in table
+     * @private
+     */
+    _addRow() {
+        const indicativeRow = this._hoveredCell.closest('TR');
+        let index = this._getHoveredSideOfContainer();
+
+        if (index === 1) {
+            index = indicativeRow.sectionRowIndex;
+            // if inserting after hovered cell
+            index = index + this._isBottomOrRight();
+        }
+
+        this._table.addRow(index);
+    }
+
+    /**
+     * @private
+     *
+     * Adds column in table
+     */
+    _addColumn() {
+        let index = this._getHoveredSideOfContainer();
+
+        if (index === 1) {
+            index = this._hoveredCell.cellIndex;
+            // if inserting after hovered cell
+            index = index + this._isBottomOrRight();
+        }
+
+        this._table.addColumn(index);
+    }
+
+    /* End Methods to add a column or row */
 }

@@ -39,6 +39,8 @@
     import CanvasFont from './CanvasFont.vue';
     import EditorJS from '@editorjs/editorjs';
 
+    let name = "Lisa";
+
     let editorHeader = new EditorJS({
         readOnly: false,
         /**
@@ -139,6 +141,26 @@
                         "withBorder": false,
                     }
                 },
+                {
+                    "type" : "table",
+                    "data" : {
+                        content: [
+                            ["Position", "Artikelnr.", "Bezeichnung"],
+                            ["1", "4057318179535", "Air Force 1 '07"],
+                            ["2", "4057318179536", "Tech Fleece"],
+                            ["3", "4057318179537", "Rundhalsshirt mit Swoosh"],
+                            ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"],
+                        ]
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : "Hallo " + name + ",",
+                        "colWidth": 12,
+                        alignment: "left"
+                    }
+                }
                 /*
                 {
                     "type" : "header",

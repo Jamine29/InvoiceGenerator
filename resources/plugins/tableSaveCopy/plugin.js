@@ -55,6 +55,11 @@ class Table {
   constructor({ data, config, api, readOnly }) {
     this.api = api;
     this.readOnly = readOnly;
+
+    console.log('in tabel');
+    console.log(this);
+    console.log(this.readOnly);
+
     this._tableConstructor = new TableConstructor(data, config, api, readOnly);
   }
 
