@@ -56,7 +56,157 @@ class Table {
     this.api = api;
     this.readOnly = readOnly;
     this._tableConstructor = new TableConstructor(data, config, api, readOnly);
+
+    /** Style Buttons */
+    this._CSS = {
+        settingsButton: this.api.styles.settingsButton,
+        settingsButtonActive: this.api.styles.settingsButtonActive,
+    };
+
+    /** Tool's initial data */
+    this.data = {
+        position: data.position !== undefined ? data.position : false,
+        description: data.description !== undefined ? data.description : false,
+        articleNumber: data.articleNumber !== undefined ? data.articleNumber : false,
+        size: data.size !== undefined ? data.size : true,
+        amount: data.amount !== undefined ? data.amount : false,
+        price: data.price !== undefined ? data.price : false,
+        valueAddedTax: data.valueAddedTax !== undefined ? data.valueAddedTax : true,
+        discount: data.discount !== undefined ? data.discount : false,
+        total: data.total !== undefined ? data.total : false,
+    };
+
+    /** */
+    console.log('pl data');
+    console.log(data);
+    /**/
+
+    /** Available Image settings */
+    this.settings = [
+        {
+            name: 'position',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">position</text></svg>`,
+        },
+        {
+            name: 'description',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">description</text></svg>`,
+        },
+        {
+            name: 'articleNumber',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">articleNumber</text></svg>`,
+        },
+        {
+            name: 'size',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">size</text></svg>`,
+        },
+        {
+            name: 'amount',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">amount</text></svg>`,
+        },
+        {
+            name: 'price',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">price</text></svg>`,
+        },
+        {
+            name: 'valueAddedTax',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">valueAddedTax</text></svg>`,
+        },
+        {
+            name: 'discount',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">discount</text></svg>`,
+        },
+        {
+            name: 'total',
+            icon: `<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><text x="0" y="10">total</text></svg>`,
+        }
+      ];
   }
+
+  /** Start */
+      updated() {
+          console.log('updated');
+      }
+    /**
+     * Makes buttons with tunes: add background, add border, stretch image
+     *
+     * @returns {HTMLDivElement}
+     */
+    renderSettings() {
+        const wrapper = document.createElement('div');
+
+        this.settings.forEach(tune => {
+            const el = document.createElement('div');
+
+            el.classList.add(this._CSS.settingsButton);
+            el.innerHTML = tune.icon;
+
+            el.addEventListener('click', () => {
+                console.log('click');
+                console.log(this);
+                console.log(tune.name);
+                this._toggleTune(tune.name, el);
+                el.classList.toggle(this._CSS.settingsButtonActive);
+            });
+
+            el.classList.toggle(this._CSS.settingsButtonActive, this.data[tune.name]);
+
+            wrapper.appendChild(el);
+        });
+
+        return wrapper;
+    };
+
+    /**
+     * Click on the Settings Button
+     *
+     * @private
+     * @param tune
+     */
+    _toggleTune(tune, el) {
+        console.log('in toogleTune');
+
+        let oldTuneValue = this.data[tune];
+        console.log('old va')
+        console.log(oldTuneValue)
+
+        this.data[tune] = !this.data[tune];
+        console.log('new va')
+        console.log(this.data[tune])
+
+        console.log('this._tableConstructor.htmlElement');
+        console.log(this._tableConstructor.htmlElement);
+
+        console.log('tbody');
+        console.log(this._tableConstructor.htmlElement.childNodes[0].childNodes[0].rows[0]);
+
+        console.log('tbody1');
+        //console.log(this._tableConstructor.htmlElement.childNodes);
+
+        console.log('tbody');
+        //console.log(this._tableConstructor.htmlElement.childNodes[0].childNodes[0].childNodes);
+
+        if(this.data[tune]) {
+            // user wants to remove column
+            console.log('add column')
+            this.handleAddTableColumn();
+        }
+        else {
+            // user wants to remove column
+            console.log('remove column')
+            this.handleRemoveTableColumn();
+        }
+    }
+
+    handleAddTableColumn() {
+        console.log('in handleAddColumn');
+    }
+
+    handleRemoveTableColumn() {
+        console.log('remove table');
+
+
+    }
+  /** End */
 
   /**
    * Return Tool's view
@@ -99,7 +249,35 @@ class Table {
       data.push(inputs.map(input => input.innerHTML));
     }
 
+    /**/
+      console.log(table.tHead.rows);
+      let tableHeadRows = table.tHead.rows;
+      console.log('row')
+      console.log(tableHeadRows)
+
+      let tableHeadData = [];
+
+      for (let i = 0; i < tableHeadRows.length; i++) {
+          const tableHeadRow = tableHeadRows[i];
+          const cols = Array.from(tableHeadRow.cells);
+          const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
+
+          /*
+           - dont save empty lines
+           - Array.every() => returns true when all items in the array pass the test with true
+           */
+          const isWorthless = inputs.every(this._isEmpty);
+
+          if (isWorthless) {
+              continue;
+          }
+          // end dont save empty lines
+
+          tableHeadData.push(inputs.map(input => input.innerHTML));
+      }
+      /**/
     return {
+        head: tableHeadData,
       content: data,
     };
   }

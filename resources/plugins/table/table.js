@@ -101,9 +101,14 @@ export class Table {
    * @private
    * @returns {HTMLElement} - the area
    */
+  /*
   _createContenteditableArea() {
     return create('div', [ CSS.inputField ], { contenteditable: !this.readOnly });
   }
+  */
+    _createContenteditableArea() {
+        return create('div', [ CSS.inputField ], { contenteditable: false });
+    }
 
   /**
    * @private

@@ -144,8 +144,8 @@
                 {
                     "type" : "table",
                     "data" : {
+                        head: ["Position", "Artikelnr.", "Bezeichnung"],
                         content: [
-                            ["Position", "Artikelnr.", "Bezeichnung"],
                             ["1", "4057318179535", "Air Force 1 '07"],
                             ["2", "4057318179536", "Tech Fleece"],
                             ["3", "4057318179537", "Rundhalsshirt mit Swoosh"],

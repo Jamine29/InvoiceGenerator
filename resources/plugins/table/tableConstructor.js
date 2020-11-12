@@ -3,6 +3,18 @@ import {create, getCoords, getSideByCoords} from './documentUtils';
 //import {HorizontalBorderToolBar, VerticalBorderToolBar} from './borderToolBar';
 import {Table} from './table';
 
+/**/
+import './styles/table.css';
+
+const _CSS = {
+    table: 'tc-table',
+    inputField: 'tc-table__inp',
+    cell: 'tc-table__cell',
+    wrapper: 'tc-table__wrap',
+    area: 'tc-table__area',
+};
+/**/
+
 const CSS = {
   editor: 'tc-editor',
   toolBarHor: 'tc-toolbar--hor',
@@ -28,7 +40,15 @@ export class TableConstructor {
     this._table = new Table(readOnly);
     const size = this._resizeTable(data, config);
 
+    /* fill table header */
+      console.log('data')
+      console.log(data)
+      //this._handleTableHead(data, size.cols);
+    /**/
+
     this._fillTable(data, size);
+
+      this._handleTableHead(data, size.cols);
 
     /** creating container around table */
     this._container = create('div', [CSS.editor, api.styles.block], null, [this._table.htmlElement]);
@@ -37,6 +57,35 @@ export class TableConstructor {
       this._hangEvents();
     }
   }
+
+  /** */
+  _handleTableHead(data, sizeCols) {
+      console.log('dataH');
+      console.log(data.head);
+      let tableHead = this._table.htmlElement.childNodes[0].createTHead();
+      let row = tableHead.insertRow(0);
+      if (data.head !== undefined) {
+          for (let j = 0; j < sizeCols && j < data.head.length; j++) {
+              let cell = row.insertCell(j);
+              //td
+              cell.classList.add(_CSS.cell);
+
+              //div area
+              let area = document.createElement("div");
+              area.classList.add(_CSS.area);
+
+              //div input
+              let inputField = document.createElement("div");
+              inputField.classList.add(_CSS.inputField);
+              inputField.innerHTML = data.head[j];
+
+              cell.appendChild(area);
+              area.appendChild(inputField);
+          }
+      }
+  }
+
+  /**/
 
   /**
    * returns html element of TableConstructor;

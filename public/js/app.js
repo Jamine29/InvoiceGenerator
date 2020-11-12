@@ -2182,7 +2182,8 @@ var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.
     }, {
       "type": "table",
       "data": {
-        content: [["Position", "Artikelnr.", "Bezeichnung"], ["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
+        head: ["Position", "Artikelnr.", "Bezeichnung"],
+        content: [["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
       }
     }, {
       "type": "paragraph",
@@ -53882,16 +53883,155 @@ var Table = /*#__PURE__*/function () {
     this.api = api;
     this.readOnly = readOnly;
     this._tableConstructor = new TableConstructor(data, config, api, readOnly);
+    /** Style Buttons */
+
+    this._CSS = {
+      settingsButton: this.api.styles.settingsButton,
+      settingsButtonActive: this.api.styles.settingsButtonActive
+    };
+    /** Tool's initial data */
+
+    this.data = {
+      position: data.position !== undefined ? data.position : false,
+      description: data.description !== undefined ? data.description : false,
+      articleNumber: data.articleNumber !== undefined ? data.articleNumber : false,
+      size: data.size !== undefined ? data.size : true,
+      amount: data.amount !== undefined ? data.amount : false,
+      price: data.price !== undefined ? data.price : false,
+      valueAddedTax: data.valueAddedTax !== undefined ? data.valueAddedTax : true,
+      discount: data.discount !== undefined ? data.discount : false,
+      total: data.total !== undefined ? data.total : false
+    };
+    /** */
+
+    console.log('pl data');
+    console.log(data);
+    /**/
+
+    /** Available Image settings */
+
+    this.settings = [{
+      name: 'position',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">position</text></svg>"
+    }, {
+      name: 'description',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">description</text></svg>"
+    }, {
+      name: 'articleNumber',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">articleNumber</text></svg>"
+    }, {
+      name: 'size',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">size</text></svg>"
+    }, {
+      name: 'amount',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">amount</text></svg>"
+    }, {
+      name: 'price',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">price</text></svg>"
+    }, {
+      name: 'valueAddedTax',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">valueAddedTax</text></svg>"
+    }, {
+      name: 'discount',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">discount</text></svg>"
+    }, {
+      name: 'total',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">total</text></svg>"
+    }];
   }
-  /**
-   * Return Tool's view
-   *
-   * @returns {HTMLDivElement}
-   * @public
-   */
+  /** Start */
 
 
   _createClass(Table, [{
+    key: "updated",
+    value: function updated() {
+      console.log('updated');
+    }
+    /**
+     * Makes buttons with tunes: add background, add border, stretch image
+     *
+     * @returns {HTMLDivElement}
+     */
+
+  }, {
+    key: "renderSettings",
+    value: function renderSettings() {
+      var _this = this;
+
+      var wrapper = document.createElement('div');
+      this.settings.forEach(function (tune) {
+        var el = document.createElement('div');
+        el.classList.add(_this._CSS.settingsButton);
+        el.innerHTML = tune.icon;
+        el.addEventListener('click', function () {
+          console.log('click');
+          console.log(_this);
+          console.log(tune.name);
+
+          _this._toggleTune(tune.name, el);
+
+          el.classList.toggle(_this._CSS.settingsButtonActive);
+        });
+        el.classList.toggle(_this._CSS.settingsButtonActive, _this.data[tune.name]);
+        wrapper.appendChild(el);
+      });
+      return wrapper;
+    }
+  }, {
+    key: "_toggleTune",
+
+    /**
+     * Click on the Settings Button
+     *
+     * @private
+     * @param tune
+     */
+    value: function _toggleTune(tune, el) {
+      console.log('in toogleTune');
+      var oldTuneValue = this.data[tune];
+      console.log('old va');
+      console.log(oldTuneValue);
+      this.data[tune] = !this.data[tune];
+      console.log('new va');
+      console.log(this.data[tune]);
+      console.log('this._tableConstructor.htmlElement');
+      console.log(this._tableConstructor.htmlElement);
+      console.log('tbody');
+      console.log(this._tableConstructor.htmlElement.childNodes[0].childNodes[0].rows[0]);
+      console.log('tbody1'); //console.log(this._tableConstructor.htmlElement.childNodes);
+
+      console.log('tbody'); //console.log(this._tableConstructor.htmlElement.childNodes[0].childNodes[0].childNodes);
+
+      if (this.data[tune]) {
+        // user wants to remove column
+        console.log('add column');
+        this.handleAddTableColumn();
+      } else {
+        // user wants to remove column
+        console.log('remove column');
+        this.handleRemoveTableColumn();
+      }
+    }
+  }, {
+    key: "handleAddTableColumn",
+    value: function handleAddTableColumn() {
+      console.log('in handleAddColumn');
+    }
+  }, {
+    key: "handleRemoveTableColumn",
+    value: function handleRemoveTableColumn() {
+      console.log('remove table');
+    }
+    /** End */
+
+    /**
+     * Return Tool's view
+     *
+     * @returns {HTMLDivElement}
+     * @public
+     */
+
+  }, {
     key: "render",
     value: function render() {
       return this._tableConstructor.htmlElement;
@@ -53933,8 +54073,45 @@ var Table = /*#__PURE__*/function () {
           return input.innerHTML;
         }));
       }
+      /**/
+
+
+      console.log(table.tHead.rows);
+      var tableHeadRows = table.tHead.rows;
+      console.log('row');
+      console.log(tableHeadRows);
+      var tableHeadData = [];
+
+      for (var _i = 0; _i < tableHeadRows.length; _i++) {
+        var tableHeadRow = tableHeadRows[_i];
+
+        var _cols = Array.from(tableHeadRow.cells);
+
+        var _inputs = _cols.map(function (cell) {
+          return cell.querySelector('.' + CSS.input);
+        });
+        /*
+         - dont save empty lines
+         - Array.every() => returns true when all items in the array pass the test with true
+         */
+
+
+        var _isWorthless = _inputs.every(this._isEmpty);
+
+        if (_isWorthless) {
+          continue;
+        } // end dont save empty lines
+
+
+        tableHeadData.push(_inputs.map(function (input) {
+          return input.innerHTML;
+        }));
+      }
+      /**/
+
 
       return {
+        head: tableHeadData,
         content: data
       };
     }
@@ -54125,11 +54302,17 @@ var Table = /*#__PURE__*/function () {
      * @returns {HTMLElement} - the area
      */
 
+    /*
+    _createContenteditableArea() {
+      return create('div', [ CSS.inputField ], { contenteditable: !this.readOnly });
+    }
+    */
+
   }, {
     key: "_createContenteditableArea",
     value: function _createContenteditableArea() {
       return Object(_documentUtils__WEBPACK_IMPORTED_MODULE_0__["create"])('div', [CSS.inputField], {
-        contenteditable: !this.readOnly
+        contenteditable: false
       });
     }
     /**
@@ -54325,6 +54508,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_table_constructor_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_table_constructor_css__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _documentUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./documentUtils */ "./resources/plugins/table/documentUtils.js");
 /* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./table */ "./resources/plugins/table/table.js");
+/* harmony import */ var _styles_table_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles/table.css */ "./resources/plugins/table/styles/table.css");
+/* harmony import */ var _styles_table_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_table_css__WEBPACK_IMPORTED_MODULE_3__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -54334,6 +54519,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
  //import {HorizontalBorderToolBar, VerticalBorderToolBar} from './borderToolBar';
 
+
+/**/
+
+
+var _CSS = {
+  table: 'tc-table',
+  inputField: 'tc-table__inp',
+  cell: 'tc-table__cell',
+  wrapper: 'tc-table__wrap',
+  area: 'tc-table__area'
+};
+/**/
 
 var CSS = {
   editor: 'tc-editor',
@@ -54362,8 +54559,17 @@ var TableConstructor = /*#__PURE__*/function () {
     this._table = new _table__WEBPACK_IMPORTED_MODULE_2__["Table"](readOnly);
 
     var size = this._resizeTable(data, config);
+    /* fill table header */
+
+
+    console.log('data');
+    console.log(data); //this._handleTableHead(data, size.cols);
+
+    /**/
 
     this._fillTable(data, size);
+
+    this._handleTableHead(data, size.cols);
     /** creating container around table */
 
 
@@ -54373,13 +54579,44 @@ var TableConstructor = /*#__PURE__*/function () {
       this._hangEvents();
     }
   }
-  /**
-   * returns html element of TableConstructor;
-   * @return {HTMLElement}
-   */
+  /** */
 
 
   _createClass(TableConstructor, [{
+    key: "_handleTableHead",
+    value: function _handleTableHead(data, sizeCols) {
+      console.log('dataH');
+      console.log(data.head);
+
+      var tableHead = this._table.htmlElement.childNodes[0].createTHead();
+
+      var row = tableHead.insertRow(0);
+
+      if (data.head !== undefined) {
+        for (var j = 0; j < sizeCols && j < data.head.length; j++) {
+          var cell = row.insertCell(j); //td
+
+          cell.classList.add(_CSS.cell); //div area
+
+          var area = document.createElement("div");
+          area.classList.add(_CSS.area); //div input
+
+          var inputField = document.createElement("div");
+          inputField.classList.add(_CSS.inputField);
+          inputField.innerHTML = data.head[j];
+          cell.appendChild(area);
+          area.appendChild(inputField);
+        }
+      }
+    }
+    /**/
+
+    /**
+     * returns html element of TableConstructor;
+     * @return {HTMLElement}
+     */
+
+  }, {
     key: "_fillTable",
 
     /**
