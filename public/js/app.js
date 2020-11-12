@@ -2182,7 +2182,17 @@ var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.
     }, {
       "type": "table",
       "data": {
-        head: ['size', 'valueAddedTax', 'amount'],
+        head: {
+          amount: false,
+          articleNumber: false,
+          description: false,
+          discount: false,
+          position: false,
+          price: false,
+          size: true,
+          total: false,
+          valueAddedTax: true
+        },
         content: [["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
       }
     }, {
@@ -53889,23 +53899,25 @@ var Table = /*#__PURE__*/function () {
       settingsButton: this.api.styles.settingsButton,
       settingsButtonActive: this.api.styles.settingsButtonActive
     };
+    console.log('ihsdja');
+    console.log(data);
     /** Tool's initial data */
 
     this.data = {
-      position: data.position !== undefined ? data.position : false,
-      description: data.description !== undefined ? data.description : false,
-      articleNumber: data.articleNumber !== undefined ? data.articleNumber : false,
-      size: data.size !== undefined ? data.size : true,
-      amount: data.amount !== undefined ? data.amount : false,
-      price: data.price !== undefined ? data.price : false,
-      valueAddedTax: data.valueAddedTax !== undefined ? data.valueAddedTax : true,
-      discount: data.discount !== undefined ? data.discount : false,
-      total: data.total !== undefined ? data.total : false
+      position: data.head.position !== undefined ? data.head.position : false,
+      description: data.head.description !== undefined ? data.head.description : false,
+      articleNumber: data.head.articleNumber !== undefined ? data.head.articleNumber : false,
+      size: data.head.size !== undefined ? data.head.size : true,
+      amount: data.head.amount !== undefined ? data.head.amount : false,
+      price: data.head.price !== undefined ? data.head.price : false,
+      valueAddedTax: data.head.valueAddedTax !== undefined ? data.head.valueAddedTax : true,
+      discount: data.head.discount !== undefined ? data.head.discount : false,
+      total: data.head.total !== undefined ? data.head.total : false
     };
     /** */
 
     console.log('pl data');
-    console.log(data);
+    console.log(this.data);
     /**/
 
     /** Available Image settings */
@@ -54111,7 +54123,7 @@ var Table = /*#__PURE__*/function () {
       /**/
 
       return {
-        head: tableHeadData,
+        head: this.data,
         content: data
       };
     }

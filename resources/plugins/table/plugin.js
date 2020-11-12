@@ -63,22 +63,26 @@ class Table {
         settingsButtonActive: this.api.styles.settingsButtonActive,
     };
 
+    console.log('ihsdja')
+    console.log(data);
+
     /** Tool's initial data */
     this.data = {
-        position: data.position !== undefined ? data.position : false,
-        description: data.description !== undefined ? data.description : false,
-        articleNumber: data.articleNumber !== undefined ? data.articleNumber : false,
-        size: data.size !== undefined ? data.size : true,
-        amount: data.amount !== undefined ? data.amount : false,
-        price: data.price !== undefined ? data.price : false,
-        valueAddedTax: data.valueAddedTax !== undefined ? data.valueAddedTax : true,
-        discount: data.discount !== undefined ? data.discount : false,
-        total: data.total !== undefined ? data.total : false,
+        position: data.head.position !== undefined ? data.head.position : false,
+        description: data.head.description !== undefined ? data.head.description : false,
+        articleNumber: data.head.articleNumber !== undefined ? data.head.articleNumber : false,
+        size: data.head.size !== undefined ? data.head.size : true,
+        amount: data.head.amount !== undefined ? data.head.amount : false,
+        price: data.head.price !== undefined ? data.head.price : false,
+        valueAddedTax: data.head.valueAddedTax !== undefined ? data.head.valueAddedTax : true,
+        discount: data.head.discount !== undefined ? data.head.discount : false,
+        total: data.head.total !== undefined ? data.head.total : false,
     };
 
     /** */
     console.log('pl data');
-    console.log(data);
+    console.log(this.data);
+
     /**/
 
     /** Available Image settings */
@@ -289,7 +293,7 @@ class Table {
 
       /**/
     return {
-        head: tableHeadData,
+        head: this.data,
         content: data,
     };
   }

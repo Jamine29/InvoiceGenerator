@@ -62,6 +62,7 @@ export class TableConstructor {
   _handleTableHead(data, sizeCols) {
       console.log('dataH');
       console.log(data.head);
+
       let tableHead = this._table.htmlElement.childNodes[0].createTHead();
       let row = tableHead.insertRow(0);
       if (data.head !== undefined) {

@@ -144,7 +144,17 @@
                 {
                     "type" : "table",
                     "data" : {
-                        head: ['size', 'valueAddedTax', 'amount'],
+                        head: {
+                            amount: false,
+                            articleNumber: false,
+                            description: false,
+                            discount: false,
+                            position: false,
+                            price: false,
+                            size: true,
+                            total: false,
+                            valueAddedTax: true,
+                        },
                         content: [
                             ["1", "4057318179535", "Air Force 1 '07"],
                             ["2", "4057318179536", "Tech Fleece"],
