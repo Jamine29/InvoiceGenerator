@@ -144,7 +144,7 @@
                 {
                     "type" : "table",
                     "data" : {
-                        head: ["Position", "Artikelnr.", "Bezeichnung"],
+                        head: ['size', 'valueAddedTax', 'amount'],
                         content: [
                             ["1", "4057318179535", "Air Force 1 '07"],
                             ["2", "4057318179536", "Tech Fleece"],

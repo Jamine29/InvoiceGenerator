@@ -228,7 +228,7 @@ class Table {
   save(toolsContent) {
     const table = toolsContent.querySelector('table');
     const data = [];
-    const rows = table.rows;
+    const rows = table.tBodies[0].rows;
 
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
@@ -257,15 +257,25 @@ class Table {
 
       let tableHeadData = [];
 
+      console.log('datae')
+      console.log(this.data)
+      for (let col in this.data) {
+          if(this.data[col]) {
+              console.log(data[col]);
+              //tableHeadData[col] = this.data[col];
+              tableHeadData.push(col);
+          }
+      }
+
+      //tableHeadData.push(this.data.map(tune => [tune.name, tune.value]));
+
+      console.log(tableHeadData);
+      /*
       for (let i = 0; i < tableHeadRows.length; i++) {
           const tableHeadRow = tableHeadRows[i];
           const cols = Array.from(tableHeadRow.cells);
           const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
 
-          /*
-           - dont save empty lines
-           - Array.every() => returns true when all items in the array pass the test with true
-           */
           const isWorthless = inputs.every(this._isEmpty);
 
           if (isWorthless) {
@@ -275,10 +285,12 @@ class Table {
 
           tableHeadData.push(inputs.map(input => input.innerHTML));
       }
+      */
+
       /**/
     return {
         head: tableHeadData,
-      content: data,
+        content: data,
     };
   }
 

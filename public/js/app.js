@@ -2182,7 +2182,7 @@ var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.
     }, {
       "type": "table",
       "data": {
-        head: ["Position", "Artikelnr.", "Bezeichnung"],
+        head: ['size', 'valueAddedTax', 'amount'],
         content: [["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
       }
     }, {
@@ -54049,7 +54049,7 @@ var Table = /*#__PURE__*/function () {
     value: function save(toolsContent) {
       var table = toolsContent.querySelector('table');
       var data = [];
-      var rows = table.rows;
+      var rows = table.tBodies[0].rows;
 
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
@@ -54081,34 +54081,34 @@ var Table = /*#__PURE__*/function () {
       console.log('row');
       console.log(tableHeadRows);
       var tableHeadData = [];
+      console.log('datae');
+      console.log(this.data);
 
-      for (var _i = 0; _i < tableHeadRows.length; _i++) {
-        var tableHeadRow = tableHeadRows[_i];
+      for (var col in this.data) {
+        if (this.data[col]) {
+          console.log(data[col]); //tableHeadData[col] = this.data[col];
 
-        var _cols = Array.from(tableHeadRow.cells);
-
-        var _inputs = _cols.map(function (cell) {
-          return cell.querySelector('.' + CSS.input);
-        });
-        /*
-         - dont save empty lines
-         - Array.every() => returns true when all items in the array pass the test with true
-         */
+          tableHeadData.push(col);
+        }
+      } //tableHeadData.push(this.data.map(tune => [tune.name, tune.value]));
 
 
-        var _isWorthless = _inputs.every(this._isEmpty);
-
-        if (_isWorthless) {
-          continue;
-        } // end dont save empty lines
-
-
-        tableHeadData.push(_inputs.map(function (input) {
-          return input.innerHTML;
-        }));
+      console.log(tableHeadData);
+      /*
+      for (let i = 0; i < tableHeadRows.length; i++) {
+          const tableHeadRow = tableHeadRows[i];
+          const cols = Array.from(tableHeadRow.cells);
+          const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
+           const isWorthless = inputs.every(this._isEmpty);
+           if (isWorthless) {
+              continue;
+          }
+          // end dont save empty lines
+           tableHeadData.push(inputs.map(input => input.innerHTML));
       }
-      /**/
+      */
 
+      /**/
 
       return {
         head: tableHeadData,
