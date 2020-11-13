@@ -155,19 +155,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\plugins" />
-      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components\Vue1" />
-      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\editorjs\src\components\tools\paragraph" />
-      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components" />
-      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\public\img" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\plugins" />
       <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\plugins\header" />
       <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components" />
       <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\editorjs\dist" />
       <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components\Vue1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\plugins" />
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components\Vue1" />
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\editorjs\src\components\tools\paragraph" />
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\resources\js\components" />
+      <recent name="C:\Users\JamineMueller\PhpstormProjects\InvoiceGenerator\public\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -195,7 +195,8 @@
       <workItem from="1604904732863" duration="25736000" />
       <workItem from="1604992423642" duration="23946000" />
       <workItem from="1605078059961" duration="24587000" />
-      <workItem from="1605164680838" duration="29395000" />
+      <workItem from="1605164680838" duration="29444000" />
+      <workItem from="1605250809330" duration="10843000" />
     </task>
     <servers />
   </component>

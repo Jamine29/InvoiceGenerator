@@ -34,19 +34,73 @@
     import Underline from '@editorjs/underline';
     import SimpleImage from '../../plugins/simpleImage/index.js';
     import DragDrop from 'editorjs-drag-drop';
-
     import CanvasSize from './CanvasSize.vue';
     import CanvasFont from './CanvasFont.vue';
     import EditorJS from '@editorjs/editorjs';
 
-    let name = "Lisa";
+    let customer = {
+        personalData: {
+            firstname: 'Lisa',
+            lastname: 'Schmidt',
+            address: {
+                street: 'Kurt-Schumacher-Platz 9',
+                postCode: '13403 Berlin'
+
+            },
+            number: '12345678'
+        },
+        invoiceData: {
+            orderNumber: '102030',
+            invoiceNumber: '87654321',
+            data: '11.11.2020'
+        },
+    }
+
+    let content = {
+        title: "Rechnung",
+        firstParagraph: "Hallo " + customer.personalData.firstname + ",",
+        secondParagraph: "viel Freude mit deiner Bestellung!",
+        thirdParagraph: "Dein Nike Team",
+        tableOrders: {
+            head: ["position", "articleNumber", "description"],
+            content: [
+                ["1", "4057318179535", "Air Force 1 '07"],
+                ["2", "4057318179536", "Tech Fleece"],
+                ["3", "4057318179537", "Rundhalsshirt mit Swoosh"],
+                ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"],
+            ]
+        },
+        invoiceData: {
+            billingAddress: '<b>Rechnungsadresse:</b>' +
+                            '<br>' + customer.personalData.firstname + " " + customer.personalData.lastname +
+                            '<br>' + customer.personalData.address.street +
+                            '<br>' + customer.personalData.address.postCode,
+            deliveryAddress:'<b>Lieferadresse:</b>' +
+                            '<br>' + customer.personalData.firstname + " " + customer.personalData.lastname +
+                            '<br>' + customer.personalData.address.street +
+                            '<br>' + customer.personalData.address.postCode,
+            customerData:   '<b>Kundendaten:</b>' +
+                            '<br>' + 'Rechnungsnr.:' +
+                            '<br>' + 'Auftragsnr.:' +
+                            '<br>' + 'Kundennr.:' +
+                            '<br>' + 'Datum:',
+            customerDataInput:   '<b> </b>' +
+                            '<br>' + customer.invoiceData.invoiceNumber +
+                            '<br>' + customer.invoiceData.orderNumber +
+                            '<br>' + customer.personalData.number +
+                            '<br>' + customer.invoiceData.data,
+            footertext: '<b>Persnlich Haftende Gesellschafterin:</b> Nike Bernd Freier SARL, 73, Rud L-130 Luxenburg' +
+                        '<br>' + 'Geschaftsführer: Claus Hans Dach(Vorsitzender), Mathias Rohe,  Marie Salt' +
+                        '<br>' + 'Sitz: Nike Straße 1, D97228 Rotterdam - AG Würzburg - Ust-Id Nr: DE 811-123 234'
+        }
+    }
 
     let editorHeader = new EditorJS({
         readOnly: false,
         /**
          * Create a holder for the Editor and pass its ID
          */
-        holder : 'editorHeader',
+        holder: 'editorHeader',
         autofocus: true,
         fixedTitleBlock: true,
         fixedFooterBlock:true,
@@ -115,16 +169,6 @@
         data: {
             "time": 1591362820044,
             "blocks": [
-                /*
-                {
-                    "type" : "header",
-                    "data" : {
-                        "text" : "Header",
-                        "level" : 2,
-                        "colWidth": 4
-                    }
-                },
-                */
                 {
                     "type" : "image",
                     "data" : {
@@ -140,63 +184,7 @@
                         "withBackground": false,
                         "withBorder": false,
                     }
-                },
-                {
-                    "type" : "table",
-                    "data" : {
-                        head: {
-                            amount: false,
-                            articleNumber: false,
-                            description: false,
-                            discount: false,
-                            position: false,
-                            price: false,
-                            size: true,
-                            total: false,
-                            valueAddedTax: true,
-                        },
-                        content: [
-                            ["1", "4057318179535", "Air Force 1 '07"],
-                            ["2", "4057318179536", "Tech Fleece"],
-                            ["3", "4057318179537", "Rundhalsshirt mit Swoosh"],
-                            ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"],
-                        ]
-                    }
-                },
-                {
-                    "type" : "paragraph",
-                    "data" : {
-                        "text" : "Hallo " + name + ",",
-                        "colWidth": 12,
-                        alignment: "left"
-                    }
                 }
-                /*
-                {
-                    "type" : "header",
-                    "data" : {
-                        "text" : "Header",
-                        "level" : 12,
-                        "colWidth": 4
-                    }
-                },
-                {
-                    "type" : "paragraph",
-                    "data" : {
-                        "text" : "Albert Einstein (geboren am 14. März 1879 in Ulm, Württemberg, Deutsches Reich; gestorben am 18. April 1955 in Princeton, New Jersey, Vereinigte Staaten) war ein deutscher Physiker mit Schweizer und US-amerikanischer Staatsbürgerschaft. Er gilt als einer der bedeutendsten theoretischen Physiker der Wissenschaftsgeschichte[1] und weltweit als bekanntester Wissenschaftler der Neuzeit. Seine Forschungen zur Struktur von Materie, Raum und Zeit sowie zum Wesen der Gravitation veränderten maßgeblich das zuvor geltende newtonsche Weltbild.",
-                        "colWidth": 6,
-                        alignment: "left"
-                    }
-                },
-                {
-                    "type" : "paragraph",
-                    "data" : {
-                        "text" : "Alan Mathison Turing (* 23. Juni 1912 in London; † 7. Juni 1954 in Wilmslow, Cheshire) war ein britischer Logiker, Mathematiker, Kryptoanalytiker und Informatiker. Er gilt heute als einer der einflussreichsten Theoretiker der frühen Computerentwicklung und Informatik. Turing schuf einen großen Teil der theoretischen Grundlagen für die moderne Informations- und Computertechnologie. Als richtungsweisend erwiesen sich auch seine Beiträge zur theoretischen Biologie.",
-                        "colWidth": 6,
-                        alignment: "right"
-                    }
-                }
-                */
             ],
             "version" : "2.18.0"
         },
@@ -218,7 +206,6 @@
         autofocus: true,
         fixedTitleBlock: true,
         fixedFooterBlock:true,
-        inlineToolbar: ['marker', 'bold', 'italic', 'align'],
         /**
          * Available Tools list.
          * Pass Tool's class or Settings object for each Tool you want to use
@@ -287,22 +274,85 @@
                 {
                     "type" : "header",
                     "data" : {
-                        "text" : "Body",
-                        "level" : 2
+                        "text" : content.title,
+                        "colWidth": 12,
+                        alignment: "left"
                     }
                 },
                 {
                     "type" : "paragraph",
                     "data" : {
-                        "text" : "Ich bin der Body."
+                        "text" : content.invoiceData.billingAddress,
+                        "colWidth": 4,
+                        alignment: "left"
                     }
-                }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.invoiceData.deliveryAddress,
+                        "colWidth": 4,
+                        alignment: "left"
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.invoiceData.customerData,
+                        "colWidth": 2,
+                        alignment: "left"
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.invoiceData.customerDataInput,
+                        "colWidth": 2,
+                        alignment: "left"
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.firstParagraph,
+                        "colWidth": 12,
+                        alignment: "left"
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.secondParagraph,
+                        "colWidth": 12,
+                        alignment: "left"
+                    }
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.thirdParagraph,
+                        "colWidth": 12,
+                        alignment: "left"
+                    }
+                },
+                {
+                    "type" : "table",
+                    "data" : content.tableOrders
+                },
+                {
+                    "type" : "paragraph",
+                    "data" : {
+                        "text" : content.invoiceData.footertext,
+                        "colWidth": 12,
+                        alignment: "center"
+                    }
+                },
             ],
             "version" : "2.18.0"
         },
         onReady: () => {
-            new DragDrop(editorBody);
-
+            console.log('in header ready');
+            new DragDrop(editorHeader);
         },
         onChange: function() {
             console.log('something changed');
@@ -437,13 +487,11 @@
     body {
         background-color: hsla(0,0%, 50%,0.2);
     }
-
     #editor {
         background-color: white;
         margin: 0 auto;
         max-width: 650px;
     }
-
     /* Editor CSS */
     #editorHeader {
         max-width: 650px;
@@ -452,14 +500,12 @@
     /* .codex-editor__redactor{display: flex;flex-wrap: wrap;flex-direction: row;} */
     .codex-editor__redactor{}
     /* .ce-block{width: 100%;padding-left: 0;padding-right: 0;} */
-
     .ce-block {
         width: 100%;
         float: left;
         padding-left: 0;
         padding-right: 0;
     }
-
     .cdx-settings-input {
         border: 1px solid rgba(201,201,204,.48);
         -webkit-box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);
@@ -471,19 +517,16 @@
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
-
     .cdx-small {
         font-size: .6rem
     }
     .ce-block__content {
         max-width: 100%
     }
-
     .cdx-settings-button.disabled,.ce-settings__button.disabled {
         pointer-events: none;
         opacity: .5
     }
-
     .cdx-settings-sidebar {
         position: absolute;
         left: 100%;bottom:0;

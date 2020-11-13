@@ -2077,7 +2077,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var name = "Lisa";
+var customer = {
+  personalData: {
+    firstname: 'Lisa',
+    lastname: 'Schmidt',
+    address: {
+      street: 'Kurt-Schumacher-Platz 9',
+      postCode: '13403 Berlin'
+    },
+    number: '12345678'
+  },
+  invoiceData: {
+    orderNumber: '102030',
+    invoiceNumber: '87654321',
+    data: '11.11.2020'
+  }
+};
+var content = {
+  title: "Rechnung",
+  firstParagraph: "Hallo " + customer.personalData.firstname + ",",
+  secondParagraph: "viel Freude mit deiner Bestellung!",
+  thirdParagraph: "Dein Nike Team",
+  tableOrders: {
+    head: ["position", "articleNumber", "description"],
+    content: [["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
+  },
+  invoiceData: {
+    billingAddress: '<b>Rechnungsadresse:</b>' + '<br>' + customer.personalData.firstname + " " + customer.personalData.lastname + '<br>' + customer.personalData.address.street + '<br>' + customer.personalData.address.postCode,
+    deliveryAddress: '<b>Lieferadresse:</b>' + '<br>' + customer.personalData.firstname + " " + customer.personalData.lastname + '<br>' + customer.personalData.address.street + '<br>' + customer.personalData.address.postCode,
+    customerData: '<b>Kundendaten:</b>' + '<br>' + 'Rechnungsnr.:' + '<br>' + 'Auftragsnr.:' + '<br>' + 'Kundennr.:' + '<br>' + 'Datum:',
+    customerDataInput: '<b> </b>' + '<br>' + customer.invoiceData.invoiceNumber + '<br>' + customer.invoiceData.orderNumber + '<br>' + customer.personalData.number + '<br>' + customer.invoiceData.data,
+    footertext: '<b>Persnlich Haftende Gesellschafterin:</b> Nike Bernd Freier SARL, 73, Rud L-130 Luxenburg' + '<br>' + 'Geschaftsführer: Claus Hans Dach(Vorsitzender), Mathias Rohe,  Marie Salt' + '<br>' + 'Sitz: Nike Straße 1, D97228 Rotterdam - AG Würzburg - Ust-Id Nr: DE 811-123 234'
+  }
+};
 var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.a({
   readOnly: false,
 
@@ -2153,18 +2185,7 @@ var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.
    */
   data: {
     "time": 1591362820044,
-    "blocks": [
-    /*
-    {
-        "type" : "header",
-        "data" : {
-            "text" : "Header",
-            "level" : 2,
-            "colWidth": 4
-        }
-    },
-    */
-    {
+    "blocks": [{
       "type": "image",
       "data": {
         "center": true,
@@ -2179,57 +2200,7 @@ var editorHeader = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.
         "withBackground": false,
         "withBorder": false
       }
-    }, {
-      "type": "table",
-      "data": {
-        head: {
-          amount: false,
-          articleNumber: false,
-          description: false,
-          discount: false,
-          position: false,
-          price: false,
-          size: true,
-          total: false,
-          valueAddedTax: true
-        },
-        content: [["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
-      }
-    }, {
-      "type": "paragraph",
-      "data": {
-        "text": "Hallo " + name + ",",
-        "colWidth": 12,
-        alignment: "left"
-      }
-    }
-    /*
-    {
-        "type" : "header",
-        "data" : {
-            "text" : "Header",
-            "level" : 12,
-            "colWidth": 4
-        }
-    },
-    {
-        "type" : "paragraph",
-        "data" : {
-            "text" : "Albert Einstein (geboren am 14. März 1879 in Ulm, Württemberg, Deutsches Reich; gestorben am 18. April 1955 in Princeton, New Jersey, Vereinigte Staaten) war ein deutscher Physiker mit Schweizer und US-amerikanischer Staatsbürgerschaft. Er gilt als einer der bedeutendsten theoretischen Physiker der Wissenschaftsgeschichte[1] und weltweit als bekanntester Wissenschaftler der Neuzeit. Seine Forschungen zur Struktur von Materie, Raum und Zeit sowie zum Wesen der Gravitation veränderten maßgeblich das zuvor geltende newtonsche Weltbild.",
-            "colWidth": 6,
-            alignment: "left"
-        }
-    },
-    {
-        "type" : "paragraph",
-        "data" : {
-            "text" : "Alan Mathison Turing (* 23. Juni 1912 in London; † 7. Juni 1954 in Wilmslow, Cheshire) war ein britischer Logiker, Mathematiker, Kryptoanalytiker und Informatiker. Er gilt heute als einer der einflussreichsten Theoretiker der frühen Computerentwicklung und Informatik. Turing schuf einen großen Teil der theoretischen Grundlagen für die moderne Informations- und Computertechnologie. Als richtungsweisend erwiesen sich auch seine Beiträge zur theoretischen Biologie.",
-            "colWidth": 6,
-            alignment: "right"
-        }
-    }
-    */
-    ],
+    }],
     "version": "2.18.0"
   },
   onReady: function onReady() {
@@ -2250,7 +2221,6 @@ var editorBody = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.a(
   autofocus: true,
   fixedTitleBlock: true,
   fixedFooterBlock: true,
-  inlineToolbar: ['marker', 'bold', 'italic', 'align'],
 
   /**
    * Available Tools list.
@@ -2319,19 +2289,75 @@ var editorBody = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_12___default.a(
     "blocks": [{
       "type": "header",
       "data": {
-        "text": "Body",
-        "level": 2
+        "text": content.title,
+        "colWidth": 12,
+        alignment: "left"
       }
     }, {
       "type": "paragraph",
       "data": {
-        "text": "Ich bin der Body."
+        "text": content.invoiceData.billingAddress,
+        "colWidth": 4,
+        alignment: "left"
+      }
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.invoiceData.deliveryAddress,
+        "colWidth": 4,
+        alignment: "left"
+      }
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.invoiceData.customerData,
+        "colWidth": 2,
+        alignment: "left"
+      }
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.invoiceData.customerDataInput,
+        "colWidth": 2,
+        alignment: "left"
+      }
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.firstParagraph,
+        "colWidth": 12,
+        alignment: "left"
+      }
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.secondParagraph,
+        "colWidth": 12,
+        alignment: "left"
+      }
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.thirdParagraph,
+        "colWidth": 12,
+        alignment: "left"
+      }
+    }, {
+      "type": "table",
+      "data": content.tableOrders
+    }, {
+      "type": "paragraph",
+      "data": {
+        "text": content.invoiceData.footertext,
+        "colWidth": 12,
+        alignment: "center"
       }
     }],
     "version": "2.18.0"
   },
   onReady: function onReady() {
-    new editorjs_drag_drop__WEBPACK_IMPORTED_MODULE_9___default.a(editorBody);
+    console.log('in header ready');
+    new editorjs_drag_drop__WEBPACK_IMPORTED_MODULE_9___default.a(editorHeader);
   },
   onChange: function onChange() {
     console.log('something changed');
@@ -7164,7 +7190,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody {\n    background-color: hsla(0,0%, 50%,0.2);\n}\n#editor {\n    background-color: white;\n    margin: 0 auto;\n    max-width: 650px;\n}\n\n/* Editor CSS */\n#editorHeader {\n    max-width: 650px;\n    margin: 0 auto;\n}\n/* .codex-editor__redactor{display: flex;flex-wrap: wrap;flex-direction: row;} */\n.codex-editor__redactor{}\n/* .ce-block{width: 100%;padding-left: 0;padding-right: 0;} */\n.ce-block {\n    width: 100%;\n    float: left;\n    padding-left: 0;\n    padding-right: 0;\n}\n.cdx-settings-input {\n    border: 1px solid rgba(201,201,204,.48);\n    box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);\n    border-radius: 3px;\n    padding: 3px 8px;\n    outline: none;\n    width: 100%;\n    box-sizing: border-box;\n}\n.cdx-small {\n    font-size: .6rem\n}\n.ce-block__content {\n    max-width: 100%\n}\n.cdx-settings-button.disabled,.ce-settings__button.disabled {\n    pointer-events: none;\n    opacity: .5\n}\n.cdx-settings-sidebar {\n    position: absolute;\n    left: 100%;bottom:0;\n    background: #fff;\n    width: 108px;\n    height: 145px;\n    box-shadow: 0 3px 15px -3px rgba(13,20,33,.13);\n    border-radius: 0 4px 4px 0;\n    z-index: 0;\n}\n/* Editor CSS - END */\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color: hsla(0,0%, 50%,0.2);\n}\n#editor {\n    background-color: white;\n    margin: 0 auto;\n    max-width: 650px;\n}\n/* Editor CSS */\n#editorHeader {\n    max-width: 650px;\n    margin: 0 auto;\n}\n/* .codex-editor__redactor{display: flex;flex-wrap: wrap;flex-direction: row;} */\n.codex-editor__redactor{}\n/* .ce-block{width: 100%;padding-left: 0;padding-right: 0;} */\n.ce-block {\n    width: 100%;\n    float: left;\n    padding-left: 0;\n    padding-right: 0;\n}\n.cdx-settings-input {\n    border: 1px solid rgba(201,201,204,.48);\n    box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);\n    border-radius: 3px;\n    padding: 3px 8px;\n    outline: none;\n    width: 100%;\n    box-sizing: border-box;\n}\n.cdx-small {\n    font-size: .6rem\n}\n.ce-block__content {\n    max-width: 100%\n}\n.cdx-settings-button.disabled,.ce-settings__button.disabled {\n    pointer-events: none;\n    opacity: .5\n}\n.cdx-settings-sidebar {\n    position: absolute;\n    left: 100%;bottom:0;\n    background: #fff;\n    width: 108px;\n    height: 145px;\n    box-shadow: 0 3px 15px -3px rgba(13,20,33,.13);\n    border-radius: 0 4px 4px 0;\n    z-index: 0;\n}\n/* Editor CSS - END */\n", ""]);
 
 // exports
 
@@ -53822,7 +53848,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var TableConstructor = __webpack_require__(/*! ./tableConstructor */ "./resources/plugins/table/tableConstructor.js").TableConstructor;
 
 var CSS = {
-  input: 'tc-table__inp'
+  input: 'tc-table__inp',
+  table: 'tc-table',
+  inputField: 'tc-table__inp',
+  cell: 'tc-table__cell',
+  wrapper: 'tc-table__wrap',
+  area: 'tc-table__area'
 };
 /**
  *  Tool for table's creating
@@ -53890,6 +53921,32 @@ var Table = /*#__PURE__*/function () {
 
     _classCallCheck(this, Table);
 
+    /**/
+
+    /** Tool's initial data */
+    this.data = {
+      position: data.head !== undefined ? data.head.includes('position') : true,
+      description: data.head !== undefined ? data.head.includes('description') : true,
+      articleNumber: data.head !== undefined ? data.head.includes('articleNumber') : true,
+      size: data.head !== undefined ? data.head.includes('size') : false,
+      amount: data.head !== undefined ? data.head.includes('amount') : false,
+      price: data.head !== undefined ? data.head.includes('price') : false,
+      valueAddedTax: data.head !== undefined ? data.head.includes('valueAddedTax') : false,
+      discount: data.head !== undefined ? data.head.includes('discount') : false,
+      total: data.head !== undefined ? data.head.includes('total') : false
+    };
+    var initDataAsArray = Object.entries(this.data);
+    var initCols = [];
+
+    for (var p = 0; p < initDataAsArray.length; p++) {
+      if (initDataAsArray[p][1]) {
+        initCols.push(initDataAsArray[p][0]);
+      }
+    }
+
+    data['head'] = initCols;
+    /**/
+
     this.api = api;
     this.readOnly = readOnly;
     this._tableConstructor = new TableConstructor(data, config, api, readOnly);
@@ -53899,27 +53956,6 @@ var Table = /*#__PURE__*/function () {
       settingsButton: this.api.styles.settingsButton,
       settingsButtonActive: this.api.styles.settingsButtonActive
     };
-    console.log('ihsdja');
-    console.log(data);
-    /** Tool's initial data */
-
-    this.data = {
-      position: data.head.position !== undefined ? data.head.position : false,
-      description: data.head.description !== undefined ? data.head.description : false,
-      articleNumber: data.head.articleNumber !== undefined ? data.head.articleNumber : false,
-      size: data.head.size !== undefined ? data.head.size : true,
-      amount: data.head.amount !== undefined ? data.head.amount : false,
-      price: data.head.price !== undefined ? data.head.price : false,
-      valueAddedTax: data.head.valueAddedTax !== undefined ? data.head.valueAddedTax : true,
-      discount: data.head.discount !== undefined ? data.head.discount : false,
-      total: data.head.total !== undefined ? data.head.total : false
-    };
-    /** */
-
-    console.log('pl data');
-    console.log(this.data);
-    /**/
-
     /** Available Image settings */
 
     this.settings = [{
@@ -53951,21 +53987,14 @@ var Table = /*#__PURE__*/function () {
       icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">total</text></svg>"
     }];
   }
-  /** Start */
+  /**
+   * Makes buttons with tunes: add background, add border, stretch image
+   *
+   * @returns {HTMLDivElement}
+   */
 
 
   _createClass(Table, [{
-    key: "updated",
-    value: function updated() {
-      console.log('updated');
-    }
-    /**
-     * Makes buttons with tunes: add background, add border, stretch image
-     *
-     * @returns {HTMLDivElement}
-     */
-
-  }, {
     key: "renderSettings",
     value: function renderSettings() {
       var _this = this;
@@ -53976,10 +54005,6 @@ var Table = /*#__PURE__*/function () {
         el.classList.add(_this._CSS.settingsButton);
         el.innerHTML = tune.icon;
         el.addEventListener('click', function () {
-          console.log('click');
-          console.log(_this);
-          console.log(tune.name);
-
           _this._toggleTune(tune.name, el);
 
           el.classList.toggle(_this._CSS.settingsButtonActive);
@@ -53999,40 +54024,89 @@ var Table = /*#__PURE__*/function () {
      * @param tune
      */
     value: function _toggleTune(tune, el) {
-      console.log('in toogleTune');
       var oldTuneValue = this.data[tune];
-      console.log('old va');
-      console.log(oldTuneValue);
       this.data[tune] = !this.data[tune];
-      console.log('new va');
-      console.log(this.data[tune]);
-      console.log('this._tableConstructor.htmlElement');
-      console.log(this._tableConstructor.htmlElement);
-      console.log('tbody');
-      console.log(this._tableConstructor.htmlElement.childNodes[0].childNodes[0].rows[0]);
-      console.log('tbody1'); //console.log(this._tableConstructor.htmlElement.childNodes);
-
-      console.log('tbody'); //console.log(this._tableConstructor.htmlElement.childNodes[0].childNodes[0].childNodes);
 
       if (this.data[tune]) {
         // user wants to remove column
-        console.log('add column');
-        this.handleAddTableColumn();
+        this.handleAddTableColumn(tune);
       } else {
         // user wants to remove column
-        console.log('remove column');
-        this.handleRemoveTableColumn();
+        this.handleRemoveTableColumn(tune);
       }
     }
   }, {
     key: "handleAddTableColumn",
-    value: function handleAddTableColumn() {
-      console.log('in handleAddColumn');
+    value: function handleAddTableColumn(tune) {
+      var tdElements = document.querySelectorAll("[data-colName='" + tune + "']");
+      var dataAsArray = Object.entries(this.data);
+      var currentCols = [];
+      var indexNewElement = null;
+
+      for (var k = 0; k < dataAsArray.length; k++) {
+        if (tune === dataAsArray[k][0]) {
+          indexNewElement = k;
+        }
+
+        if (dataAsArray[k][1] && tune !== dataAsArray[k][0]) {
+          currentCols.push([dataAsArray[k][0], dataAsArray[k][1], k]);
+        }
+      }
+
+      var before = null;
+      var after = null;
+      var afterNodeIndex = null;
+
+      for (var m = 0; m < currentCols.length; m++) {
+        var currentCol = currentCols[m];
+
+        if (currentCols[m][2] < indexNewElement) {
+          before = currentCols[m][2];
+        }
+
+        if (currentCols[m][2] > indexNewElement && after === null) {
+          after = currentCols[m][2];
+          afterNodeIndex = m;
+        }
+      } //td
+
+
+      var cell = document.createElement('td');
+      cell.classList.add(CSS.cell);
+      cell.setAttribute('data-colName', dataAsArray[indexNewElement][0]); //div area
+
+      var area = document.createElement("div");
+      area.classList.add(CSS.area); //div input
+
+      var inputField = document.createElement("div");
+      inputField.classList.add(CSS.inputField);
+      inputField.innerHTML = dataAsArray[indexNewElement][0];
+      cell.appendChild(area);
+      area.appendChild(inputField); // append child
+
+      if (after === null) {
+        /* append at the end */
+        this._tableConstructor._table._table.tHead.childNodes[0].appendChild(cell);
+      } else if (after !== null) {
+        /* append before after sibling */
+        this._tableConstructor._table._table.tHead.childNodes[0].insertBefore(cell, this._tableConstructor._table._table.tHead.childNodes[0].childNodes[afterNodeIndex]);
+      }
     }
   }, {
     key: "handleRemoveTableColumn",
-    value: function handleRemoveTableColumn() {
-      console.log('remove table');
+    value: function handleRemoveTableColumn(tune) {
+      var tdElements = document.querySelectorAll("[data-colName='" + tune + "']");
+
+      for (var r = 0; r < tdElements.length; r++) {
+        tdElements[r].remove();
+      } // if no columns destroy table
+
+
+      var allTdElements = document.querySelectorAll("[data-colName]");
+
+      if (allTdElements.length === 0) {
+        this.api.blocks["delete"]();
+      }
     }
     /** End */
 
@@ -54088,13 +54162,8 @@ var Table = /*#__PURE__*/function () {
       /**/
 
 
-      console.log(table.tHead.rows);
       var tableHeadRows = table.tHead.rows;
-      console.log('row');
-      console.log(tableHeadRows);
       var tableHeadData = [];
-      console.log('datae');
-      console.log(this.data);
 
       for (var col in this.data) {
         if (this.data[col]) {
@@ -54104,26 +54173,25 @@ var Table = /*#__PURE__*/function () {
         }
       } //tableHeadData.push(this.data.map(tune => [tune.name, tune.value]));
 
-
-      console.log(tableHeadData);
       /*
       for (let i = 0; i < tableHeadRows.length; i++) {
           const tableHeadRow = tableHeadRows[i];
           const cols = Array.from(tableHeadRow.cells);
           const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
-           const isWorthless = inputs.every(this._isEmpty);
-           if (isWorthless) {
+          const isWorthless = inputs.every(this._isEmpty);
+          if (isWorthless) {
               continue;
           }
           // end dont save empty lines
-           tableHeadData.push(inputs.map(input => input.innerHTML));
+          tableHeadData.push(inputs.map(input => input.innerHTML));
       }
       */
 
       /**/
 
+
       return {
-        head: this.data,
+        head: tableHeadData,
         content: data
       };
     }
@@ -54571,13 +54639,6 @@ var TableConstructor = /*#__PURE__*/function () {
     this._table = new _table__WEBPACK_IMPORTED_MODULE_2__["Table"](readOnly);
 
     var size = this._resizeTable(data, config);
-    /* fill table header */
-
-
-    console.log('data');
-    console.log(data); //this._handleTableHead(data, size.cols);
-
-    /**/
 
     this._fillTable(data, size);
 
@@ -54597,9 +54658,6 @@ var TableConstructor = /*#__PURE__*/function () {
   _createClass(TableConstructor, [{
     key: "_handleTableHead",
     value: function _handleTableHead(data, sizeCols) {
-      console.log('dataH');
-      console.log(data.head);
-
       var tableHead = this._table.htmlElement.childNodes[0].createTHead();
 
       var row = tableHead.insertRow(0);
@@ -54608,7 +54666,8 @@ var TableConstructor = /*#__PURE__*/function () {
         for (var j = 0; j < sizeCols && j < data.head.length; j++) {
           var cell = row.insertCell(j); //td
 
-          cell.classList.add(_CSS.cell); //div area
+          cell.classList.add(_CSS.cell);
+          cell.setAttribute('data-colName', data.head[j]); //div area
 
           var area = document.createElement("div");
           area.classList.add(_CSS.area); //div input
@@ -54645,6 +54704,7 @@ var TableConstructor = /*#__PURE__*/function () {
             // get current cell and her editable part
             var input = this._table.body.rows[i].cells[j].querySelector('.' + CSS.inputField);
 
+            input.parentNode.parentNode.setAttribute('data-colName', data.head[j]);
             input.innerHTML = data.content[i][j];
           }
         }
