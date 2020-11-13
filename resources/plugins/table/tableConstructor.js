@@ -128,7 +128,16 @@ export class TableConstructor {
         const configCols = !isNaN(parsedCols) && parsedCols > 0 ? parsedCols : undefined;
         const defaultRows = 2;
         const defaultCols = 2;
-        const rows = contentRows || configRows || defaultRows;
+
+        let rows = 0;
+
+        if(contentRows === 0 || contentRows === undefined) {
+            rows = 0;
+        }
+        else {
+            rows = contentRows || configRows || defaultRows;
+        }
+
         const cols = contentCols || configCols || defaultCols;
 
         for (let i = 0; i < rows; i++) {

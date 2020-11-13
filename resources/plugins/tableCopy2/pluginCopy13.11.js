@@ -281,38 +281,57 @@ class Table {
     save(toolsContent) {
         const table = toolsContent.querySelector('table');
         const data = [];
-        if(table.tBodies.length !== 0) {
-            const rows = table.tBodies[0].rows;
+        console.log('in save')
+        console.log(table.tBodies)
+        const rows = table.tBodies[0].rows;
 
-            for (let i = 0; i < rows.length; i++) {
-                const row = rows[i];
-                const cols = Array.from(row.cells);
-                const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const cols = Array.from(row.cells);
+            const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
 
-                /*
-                 - dont save empty lines
-                 - Array.every() => returns true when all items in the array pass the test with true
-                 */
-                const isWorthless = inputs.every(this._isEmpty);
+            /*
+             - dont save empty lines
+             - Array.every() => returns true when all items in the array pass the test with true
+             */
+            const isWorthless = inputs.every(this._isEmpty);
 
-                if (isWorthless) {
-                    continue;
-                }
-                // end dont save empty lines
-
-                data.push(inputs.map(input => input.innerHTML));
+            if (isWorthless) {
+                continue;
             }
+            // end dont save empty lines
+
+            data.push(inputs.map(input => input.innerHTML));
         }
 
         /**/
+        let tableHeadRows = table.tHead.rows;
 
         let tableHeadData = [];
 
         for (let col in this.data) {
             if(this.data[col]) {
+                console.log(data[col]);
+                //tableHeadData[col] = this.data[col];
                 tableHeadData.push(col);
             }
         }
+
+        //tableHeadData.push(this.data.map(tune => [tune.name, tune.value]));
+
+        /*
+        for (let i = 0; i < tableHeadRows.length; i++) {
+            const tableHeadRow = tableHeadRows[i];
+            const cols = Array.from(tableHeadRow.cells);
+            const inputs = cols.map(cell => cell.querySelector('.' + CSS.input));
+            const isWorthless = inputs.every(this._isEmpty);
+            if (isWorthless) {
+                continue;
+            }
+            // end dont save empty lines
+            tableHeadData.push(inputs.map(input => input.innerHTML));
+        }
+        */
 
         /**/
         return {

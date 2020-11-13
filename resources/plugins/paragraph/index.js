@@ -184,10 +184,14 @@ class Paragraph {
      * @public
      */
     validate(savedData) {
+        /*
+        // don't save empty block
         if (savedData.text.trim() === '' && !this._preserveBlank) {
             return false;
         }
+        */
 
+        // save also empty blocks
         return true;
     }
 
