@@ -312,7 +312,7 @@
     #editorjs {
         height: 842px;
         padding: 0 20px;
-        overflow: auto;
+        overflow-y: scroll;
     }
     body {
         background-color: hsla(0,0%, 50%,0.2);
