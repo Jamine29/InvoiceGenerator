@@ -2052,7 +2052,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// haben Bugs
+// have bugs
 
 
  //
@@ -2091,14 +2091,7 @@ var content = {
   thirdParagraph: "Dein Nike Team",
   tableOrders: {
     head: ["position", "articleNumber", "description"],
-    content: [
-      /*
-      ["1", "4057318179535", "Air Force 1 '07"],
-      ["2", "4057318179536", "Tech Fleece"],
-      ["3", "4057318179537", "Rundhalsshirt mit Swoosh"],
-      ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"],
-      */
-    ]
+    content: [["1", "4057318179535", "Air Force 1 '07"], ["2", "4057318179536", "Tech Fleece"], ["3", "4057318179537", "Rundhalsshirt mit Swoosh"], ["4", "4057318179538", "Winter-Hoodie mit Halbreißverschluss"]]
   },
   invoiceData: {
     billingAddress: '<b>Rechnungsadresse:</b>' + '<br>' + customer.personalData.firstname + " " + customer.personalData.lastname + '<br>' + customer.personalData.address.street + '<br>' + customer.personalData.address.postCode,
@@ -2149,7 +2142,7 @@ var editor = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_13___default.a({
       inlineToolbar: ['bold', 'italic', 'underline'],
       config: {
         placeholder: 'Enter a header',
-        levels: [2, 3, 4],
+        levels: [1, 2, 3, 4, 5, 6],
         defaultLevel: 3
       }
     },
@@ -2195,66 +2188,76 @@ var editor = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_13___default.a({
       "data": {
         "text": content.invoiceData.billingAddress,
         "colWidth": 4,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": content.invoiceData.deliveryAddress,
         "colWidth": 4,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": content.invoiceData.customerData,
         "colWidth": 2,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": content.invoiceData.customerDataInput,
         "colWidth": 2,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": content.firstParagraph,
         "colWidth": 12,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": content.secondParagraph,
         "colWidth": 12,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": content.thirdParagraph,
         "colWidth": 12,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "paragraph",
       "data": {
         "text": "",
         "colWidth": 12,
-        alignment: "left"
+        alignment: "left",
+        fontSize: 9
       }
     }, {
       "type": "table",
-      "data": content.tableOrders
+      "data": content.tableOrders,
+      "fontSize": 9
     }, {
       "type": "paragraph",
       "data": {
         "text": content.invoiceData.footertext,
         "colWidth": 12,
-        alignment: "center"
+        alignment: "center",
+        fontSize: 8
       }
     }],
     "version": "2.18.0"
@@ -2280,14 +2283,21 @@ var editor = new _editorjs_editorjs__WEBPACK_IMPORTED_MODULE_13___default.a({
   },
   methods: {
     saveData: function saveData() {
-      console.log(editor);
+      //console.log(editor);
       editor.save().then(function (savedData) {
-        console.log('data');
+        console.log('saved data');
         console.log(savedData);
       })["catch"](function (error) {
         console.error('Saving error', error);
       });
     }
+    /*
+    export html 
+    -> give every block a id header/body/footer
+    -> get all elements with a header tag and put it in a div with the id header
+    ->do the same with body and footer
+    */
+
   }
 });
 
@@ -6905,7 +6915,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".ce-paragraph {\n    line-height: 1.6em;\n    outline: none;\n}\n.ce-paragraph--right {\n    text-align: right;\n}\n.ce-paragraph--center {\n    text-align: center;\n}\n.ce-paragraph--left {\n    text-align: left;\n}\n\n.ce-paragraph[data-placeholder]:empty::before{\n    content: attr(data-placeholder);\n    color: #707684;\n    font-weight: normal;\n    opacity: 0;\n}\n\n/** Show placeholder at the first paragraph if Editor is empty */\n.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before {\n    opacity: 1;\n}\n\n.codex-editor--toolbox-opened .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before,\n.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty:focus::before {\n    opacity: 0;\n}\n\n.ce-paragraph p:first-of-type{\n    margin-top: 0;\n}\n\n.ce-paragraph p:last-of-type{\n    margin-bottom: 0;\n}\n\n\n.svg-icon {\n    width: 1em;\n    height: 1em;\n}\n\n.svg-icon path,\n.svg-icon polygon,\n.svg-icon rect {\n    fill: #4691f6;\n}\n\n.svg-icon circle {\n    stroke: #4691f6;\n    stroke-width: 1;\n}\n\n/* CSS for columns https://github.com/oodeveloper/editorjs-multicolumn*/\n.es-col-1 {\n    flex: 0 0 8.333333%;\n    max-width: 8.333333%;\n}\n\n.es-col-2 {\n    flex: 0 0 16.666667%;\n    max-width: 16.666667%;\n}\n\n.es-col-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n\n.es-col-4 {\n    flex: 0 0 33.333333%;\n    max-width: 33.333333%;\n}\n\n.es-col-5 {\n    flex: 0 0 41.666667%;\n    max-width: 41.666667%;\n}\n\n.es-col-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n\n.es-col-7 {\n    flex: 0 0 58.333333%;\n    max-width: 58.333333%;\n}\n\n.es-col-8 {\n    flex: 0 0 66.666667%;\n    max-width: 66.666667%;\n}\n\n.es-col-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n\n.es-col-10 {\n    flex: 0 0 83.333333%;\n    max-width: 83.333333%;\n}\n\n.es-col-11 {\n    flex: 0 0 91.666667%;\n    max-width: 91.666667%;\n}\n\n.es-col-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n\n/* End CSS for columns*/\n", ""]);
+exports.push([module.i, ".ce-paragraph {\n    line-height: 1.6em;\n    outline: none;\n}\n.ce-paragraph--right {\n    text-align: right;\n}\n.ce-paragraph--center {\n    text-align: center;\n}\n.ce-paragraph--left {\n    text-align: left;\n}\n\n.ce-paragraph[data-placeholder]:empty::before{\n    content: attr(data-placeholder);\n    color: #707684;\n    font-weight: normal;\n    opacity: 0;\n}\n\n/** Show placeholder at the first paragraph if Editor is empty */\n.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before {\n    opacity: 1;\n}\n\n.codex-editor--toolbox-opened .ce-block:first-child .ce-paragraph[data-placeholder]:empty::before,\n.codex-editor--empty .ce-block:first-child .ce-paragraph[data-placeholder]:empty:focus::before {\n    opacity: 0;\n}\n\n.ce-paragraph p:first-of-type{\n    margin-top: 0;\n}\n\n.ce-paragraph p:last-of-type{\n    margin-bottom: 0;\n}\n\n\n.svg-icon {\n    width: 1em;\n    height: 1em;\n}\n\n.svg-icon path,\n.svg-icon polygon,\n.svg-icon rect {\n    fill: #4691f6;\n}\n\n.svg-icon circle {\n    stroke: #4691f6;\n    stroke-width: 1;\n}\n\n/* CSS for columns https://github.com/oodeveloper/editorjs-multicolumn*/\n.es-col-1 {\n    flex: 0 0 8.333333%;\n    max-width: 8.333333%;\n}\n\n.es-col-2 {\n    flex: 0 0 16.666667%;\n    max-width: 16.666667%;\n}\n\n.es-col-3 {\n    flex: 0 0 25%;\n    max-width: 25%;\n}\n\n.es-col-4 {\n    flex: 0 0 33.333333%;\n    max-width: 33.333333%;\n}\n\n.es-col-5 {\n    flex: 0 0 41.666667%;\n    max-width: 41.666667%;\n}\n\n.es-col-6 {\n    flex: 0 0 50%;\n    max-width: 50%;\n}\n\n.es-col-7 {\n    flex: 0 0 58.333333%;\n    max-width: 58.333333%;\n}\n\n.es-col-8 {\n    flex: 0 0 66.666667%;\n    max-width: 66.666667%;\n}\n\n.es-col-9 {\n    flex: 0 0 75%;\n    max-width: 75%;\n}\n\n.es-col-10 {\n    flex: 0 0 83.333333%;\n    max-width: 83.333333%;\n}\n\n.es-col-11 {\n    flex: 0 0 91.666667%;\n    max-width: 91.666667%;\n}\n\n.es-col-12 {\n    flex: 0 0 100%;\n    max-width: 100%;\n}\n\n/* End CSS for columns*/\n\n\n.font-size-8 {\n    font-size: 8px;\n}\n\n.font-size-9 {\n    font-size: 9px;\n}\n\n.font-size-10 {\n    font-size: 10px;\n}\n\n.font-size-11 {\n    font-size: 11px;\n}\n\n.font-size-12 {\n    font-size: 12px;\n}\n\n.font-size-13 {\n    font-size: 13px;\n}\n\n.font-size-14 {\n    font-size: 14px;\n}\n\n.font-size-15 {\n    font-size: 15px;\n}\n\n.font-size-16 {\n    font-size: 16px;\n}\n\n", ""]);
 
 // exports
 
@@ -7000,7 +7010,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n@media (min-width: 651px) {\n.codex-editor--narrow .codex-editor__redactor {\n        margin-right: 0px;\n}\n}\n.ce-toolbar {\n    /*transform: translate3d(31px, 452px, 0px) !important;*/\n}\n@media (min-width: 651px) {\n.codex-editor--narrow .ce-block--focused {\n        margin-right: -50px;\n        padding-right: 0px !important;\n}\n}\n@media (min-width: 651px) {\n.codex-editor--narrow .ce-toolbar__actions {\n        right: -32px;\n}\n}\n#editorjs {\n    height: 842px;\n    padding: 0 20px;\n    overflow-y: scroll;\n}\nbody {\n    background-color: hsla(0,0%, 50%,0.2);\n}\n#editorjs {\n    background-color: white;\n    margin: 0 auto;\n    width: 595px;\n    margin-bottom: 100px;\n}\n\n/* Editor CSS */\n#editorHeader {\n    max-width: 650px;\n    margin: 0 auto;\n}\n.codex-editor__redactor{}\n.ce-block {\n    width: 100%;\n    float: left;\n    padding-left: 0;\n    padding-right: 0;\n}\n.cdx-settings-input {\n    border: 1px solid rgba(201,201,204,.48);\n    box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);\n    border-radius: 3px;\n    padding: 3px 8px;\n    outline: none;\n    width: 100%;\n    box-sizing: border-box;\n}\n.cdx-small {\n    font-size: .6rem\n}\n.ce-block__content {\n    max-width: 100%\n}\n.cdx-settings-button.disabled,.ce-settings__button.disabled {\n    pointer-events: none;\n    opacity: .5\n}\n.cdx-settings-sidebar {\n    position: absolute;\n    left: 100%;bottom:0;\n    background: #fff;\n    width: 108px;\n    height: 145px;\n    box-shadow: 0 3px 15px -3px rgba(13,20,33,.13);\n    border-radius: 0 4px 4px 0;\n    z-index: 0;\n}\n/* Editor CSS - END */\n", ""]);
+exports.push([module.i, "\n@media (min-width: 651px) {\n.codex-editor--narrow .codex-editor__redactor {\n        margin-right: 0px;\n}\n}\n@media (min-width: 651px) {\n.codex-editor--narrow .ce-block--focused {\n        margin-right: 0px !important;\n        padding-right: 0px !important;\n}\n}\n@media (min-width: 651px) {\n.codex-editor--narrow .ce-toolbar__actions {\n        right: -32px;\n}\n}\n#editorjs {\n    background-color: white;\n    margin: 0 auto;\n    height: 845px;\n    padding: 0 20px;\n    width: 595px;\n    overflow-y: scroll;\n    overflow-x: hidden;\n    box-sizing: content-box;\n}\nbody {\n    background-color: hsla(0,0%, 50%,0.2);\n}\n\n/* Editor CSS */\n#editorHeader {\n    max-width: 650px;\n    margin: 0 auto;\n}\n.codex-editor__redactor{}\n.ce-block {\n    width: 100%;\n    float: left;\n    padding-left: 0;\n    padding-right: 0;\n}\n.cdx-settings-input {\n    border: 1px solid rgba(201,201,204,.48);\n    box-shadow: inset 0 1px 2px 0 rgba(35,44,72,.06);\n    border-radius: 3px;\n    padding: 3px 8px;\n    outline: none;\n    width: 100%;\n    box-sizing: border-box;\n}\n.cdx-small {\n    font-size: .6rem\n}\n.ce-block__content {\n    max-width: 100%\n}\n.cdx-settings-button.disabled,.ce-settings__button.disabled {\n    pointer-events: none;\n    opacity: .5\n}\n.cdx-settings-sidebar {\n    position: absolute;\n    left: 100%;bottom:0;\n    background: #fff;\n    width: 108px;\n    height: 145px;\n    box-shadow: 0 3px 15px -3px rgba(13,20,33,.13);\n    border-radius: 0 4px 4px 0;\n    z-index: 0;\n}\n/* Editor CSS - END */\n", ""]);
 
 // exports
 
@@ -38938,7 +38948,7 @@ var render = function() {
       _vm._v(" "),
       _c("button", { on: { click: _vm.saveData } }, [_vm._v("Save")]),
       _vm._v(" "),
-      _c("div", { attrs: { id: "editorjs" } })
+      _c("div", { staticClass: "a", attrs: { id: "editorjs" } })
     ],
     1
   )
@@ -51676,6 +51686,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/plugins/functions/handleBlockFontSize.js":
+/*!************************************************************!*\
+  !*** ./resources/plugins/functions/handleBlockFontSize.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var handleBlockFontSize = {
+  handleFontSize: function handleFontSize(tune, fontSize) {
+    if (fontSize <= 24 && fontSize >= 9 && tune === 'shrinkFont') {
+      return fontSize - 1;
+    } else if (fontSize <= 15 && fontSize >= 8 && tune === 'increaseFont') {
+      return fontSize + 1;
+    } else {
+      return fontSize;
+    }
+  },
+  handleFontSizeClass: function handleFontSizeClass(classes, fontSize) {
+    for (var i = 0; classes.length > i; i++) {
+      if (classes[i].includes("font-size-")) {
+        classes.remove(classes[i]);
+        break;
+      }
+    }
+
+    classes.add('font-size-' + fontSize);
+  },
+  handleFontSizeSettings: {
+    increaseFont: {
+      name: 'increaseFont',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">IF</text></svg>"
+    },
+    shrinkFont: {
+      name: 'shrinkFont',
+      icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">SF</text></svg>"
+    }
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (handleBlockFontSize);
+
+/***/ }),
+
 /***/ "./resources/plugins/functions/hangblockSize.js":
 /*!******************************************************!*\
   !*** ./resources/plugins/functions/hangblockSize.js ***!
@@ -51770,7 +51824,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  */
 __webpack_require__(/*! ./index.css */ "./resources/plugins/header/index.css").toString();
 
-var handleBlockSize = __webpack_require__(/*! ../functions/hangblockSize */ "./resources/plugins/functions/hangblockSize.js");
+var handleBlockSize = __webpack_require__(/*! ../functions/hangblockSize.js */ "./resources/plugins/functions/hangblockSize.js");
 /**
  * @typedef {object} HeaderData
  * @description Tool's input and output data format
@@ -51974,7 +52028,9 @@ var Header = /*#__PURE__*/function () {
         el.classList.add(_this._CSS.settingsButton);
         el.innerHTML = tune.icon;
         el.addEventListener('click', function () {
-          _this.setColWidth(tune.name);
+          if (tune.name === 'shrink' || tune.name === 'enlarge') {
+            _this.setColWidth(tune.name);
+          }
         });
         holder.appendChild(el);
 
@@ -52057,7 +52113,8 @@ var Header = /*#__PURE__*/function () {
     value: function save(toolsContent) {
       return {
         text: toolsContent.innerHTML,
-        level: this.currentLevel.number
+        level: this.currentLevel.number,
+        fontSize: this.data['fontSize']
       };
     }
     /**
@@ -52445,6 +52502,8 @@ __webpack_require__(/*! ./index.css */ "./resources/plugins/paragraph/index.css"
 
 var handleBlockSize = __webpack_require__(/*! ../functions/hangblockSize */ "./resources/plugins/functions/hangblockSize.js");
 
+var handleBlockFontSize = __webpack_require__(/*! ../functions/handleBlockFontSize.js */ "./resources/plugins/functions/handleBlockFontSize.js");
+
 var Paragraph = /*#__PURE__*/function () {
   _createClass(Paragraph, null, [{
     key: "DEFAULT_PLACEHOLDER",
@@ -52531,7 +52590,7 @@ var Paragraph = /*#__PURE__*/function () {
     }, {
       name: 'right',
       icon: "<svg xmlns=\"http://www.w3.org/2000/svg\" id=\"Layer\" enable-background=\"new 0 0 64 64\" height=\"20\" viewBox=\"0 0 64 64\" width=\"20\"><path d=\"m54 8h-44c-1.104 0-2 .896-2 2s.896 2 2 2h44c1.104 0 2-.896 2-2s-.896-2-2-2z\"/><path d=\"m54 52h-44c-1.104 0-2 .896-2 2s.896 2 2 2h44c1.104 0 2-.896 2-2s-.896-2-2-2z\"/><path d=\"m54 19h-28c-1.104 0-2 .896-2 2s.896 2 2 2h28c1.104 0 2-.896 2-2s-.896-2-2-2z\"/><path d=\"m54 30h-44c-1.104 0-2 .896-2 2s.896 2 2 2h44c1.104 0 2-.896 2-2s-.896-2-2-2z\"/><path d=\"m54 41h-28c-1.104 0-2 .896-2 2s.896 2 2 2h28c1.104 0 2-.896 2-2s-.896-2-2-2z\"/></svg>"
-    }, handleBlockSize["default"].handleColSettings.enlarge, handleBlockSize["default"].handleColSettings.shrink];
+    }, handleBlockSize["default"].handleColSettings.enlarge, handleBlockSize["default"].handleColSettings.shrink, handleBlockFontSize["default"].handleFontSizeSettings.increaseFont, handleBlockFontSize["default"].handleFontSizeSettings.shrinkFont];
     this.onKeyUp = this.onKeyUp.bind(this);
     /**
      * Placeholder for paragraph if it is first Block
@@ -52542,7 +52601,8 @@ var Paragraph = /*#__PURE__*/function () {
     this._data = {
       text: data.text || '',
       alignment: data.alignment || config.defaultAlignment || Paragraph.DEFAULT_ALIGNMENT,
-      colWidth: data.colWidth !== undefined ? data.colWidth : 12
+      colWidth: data.colWidth !== undefined ? data.colWidth : 12,
+      fontSize: data.fontSize !== undefined ? data.fontSize : 11
     };
     this._element = this.drawView();
     this.data = data;
@@ -52604,6 +52664,7 @@ var Paragraph = /*#__PURE__*/function () {
     key: "rendered",
     value: function rendered() {
       handleBlockSize["default"].handleColClass(this._element.parentNode.parentNode.classList, this.data['colWidth']);
+      handleBlockFontSize["default"].handleFontSizeClass(this._element.parentNode.parentNode.classList, this.data['fontSize']);
     }
     /**
      * Method that specified how to merge two Text blocks.
@@ -52708,7 +52769,9 @@ var Paragraph = /*#__PURE__*/function () {
           elements.forEach(function (el, i) {
             var name = _this.settings[i].name;
 
-            if (name === 'enlarge' || name === 'shrink') {
+            if (name == 'increaseFont' || name === 'shrinkFont') {
+              handleBlockFontSize["default"].handleFontSizeClass(_this._element.parentNode.parentNode.classList, _this.data['fontSize']);
+            } else if (name === 'enlarge' || name === 'shrink') {
               handleBlockSize["default"].handleColClass(_this._element.parentNode.parentNode.classList, _this.data['colWidth']);
             } else {
               el.classList.toggle(_this.CSS.settingsButtonActive, name === _this.data.alignment); //paragraphのdivにalignmentのclassをつける。
@@ -52729,7 +52792,9 @@ var Paragraph = /*#__PURE__*/function () {
   }, {
     key: "_toggleTune",
     value: function _toggleTune(tune) {
-      if (tune === "enlarge" || tune === "shrink") {
+      if (tune === 'increaseFont' || tune === 'shrinkFont') {
+        this.data['fontSize'] = handleBlockFontSize["default"].handleFontSize(tune, this.data['fontSize']);
+      } else if (tune === "enlarge" || tune === "shrink") {
         this.data['colWidth'] = handleBlockSize["default"].handleColWidth(tune, this.data['colWidth']);
       } else {
         this.data.alignment = tune;
@@ -52759,7 +52824,8 @@ var Paragraph = /*#__PURE__*/function () {
       this._data = {
         text: data.text || '',
         alignment: data.alignment || this.config.defaultAlignment || Paragraph.DEFAULT_ALIGNMENT,
-        colWidth: data.colWidth !== undefined ? data.colWidth : 12
+        colWidth: data.colWidth !== undefined ? data.colWidth : 12,
+        fontSize: data.fontSize !== undefined ? data.fontSize : 11
       };
       this._element.innerHTML = this._data.text || '';
     }
@@ -53658,6 +53724,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var TableConstructor = __webpack_require__(/*! ./tableConstructor */ "./resources/plugins/table/tableConstructor.js").TableConstructor;
 
+var handleBlockFontSize = __webpack_require__(/*! ../functions/handleBlockFontSize.js */ "./resources/plugins/functions/handleBlockFontSize.js");
+
 var CSS = {
   input: 'tc-table__inp',
   table: 'tc-table',
@@ -53744,7 +53812,8 @@ var Table = /*#__PURE__*/function () {
       price: data.head !== undefined ? data.head.includes('price') : false,
       valueAddedTax: data.head !== undefined ? data.head.includes('valueAddedTax') : false,
       discount: data.head !== undefined ? data.head.includes('discount') : false,
-      total: data.head !== undefined ? data.head.includes('total') : false
+      total: data.head !== undefined ? data.head.includes('total') : false,
+      fontSize: data.fontSize !== undefined ? data.fontSize : 11
     };
     var initDataAsArray = Object.entries(this.data);
     var initCols = [];
@@ -53796,7 +53865,7 @@ var Table = /*#__PURE__*/function () {
     }, {
       name: 'total',
       icon: "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"><text x=\"0\" y=\"10\">total</text></svg>"
-    }];
+    }, handleBlockFontSize["default"].handleFontSizeSettings.increaseFont, handleBlockFontSize["default"].handleFontSizeSettings.shrinkFont];
   }
   /**
    * Makes buttons with tunes: add background, add border, stretch image
@@ -53818,9 +53887,17 @@ var Table = /*#__PURE__*/function () {
         el.addEventListener('click', function () {
           _this._toggleTune(tune.name, el);
 
-          el.classList.toggle(_this._CSS.settingsButtonActive);
+          if (tune.name === 'increaseFont' || tune.name === 'shrinkFont') {
+            handleBlockFontSize["default"].handleFontSizeClass(_this._tableConstructor._table.htmlElement.classList, _this.data['fontSize']);
+          } else {
+            el.classList.toggle(_this._CSS.settingsButtonActive);
+          }
         });
-        el.classList.toggle(_this._CSS.settingsButtonActive, _this.data[tune.name]);
+
+        if (tune.name === 'increaseFont' || tune.name === 'shrinkFont') {} else {
+          el.classList.toggle(_this._CSS.settingsButtonActive, _this.data[tune.name]);
+        }
+
         wrapper.appendChild(el);
       });
       return wrapper;
@@ -53835,15 +53912,19 @@ var Table = /*#__PURE__*/function () {
      * @param tune
      */
     value: function _toggleTune(tune, el) {
-      var oldTuneValue = this.data[tune];
-      this.data[tune] = !this.data[tune];
-
-      if (this.data[tune]) {
-        // user wants to remove column
-        this.handleAddTableColumn(tune);
+      if (tune === 'increaseFont' || tune === 'shrinkFont') {
+        this.data['fontSize'] = handleBlockFontSize["default"].handleFontSize(tune, this.data['fontSize']);
       } else {
-        // user wants to remove column
-        this.handleRemoveTableColumn(tune);
+        var oldTuneValue = this.data[tune];
+        this.data[tune] = !this.data[tune];
+
+        if (this.data[tune]) {
+          // user wants to remove column
+          this.handleAddTableColumn(tune);
+        } else {
+          // user wants to remove column
+          this.handleRemoveTableColumn(tune);
+        }
       }
     }
   }, {
@@ -53933,6 +54014,11 @@ var Table = /*#__PURE__*/function () {
     value: function render() {
       return this._tableConstructor.htmlElement;
     }
+  }, {
+    key: "rendered",
+    value: function rendered() {
+      handleBlockFontSize["default"].handleFontSizeClass(this._tableConstructor._table.htmlElement.classList, this.data['fontSize']);
+    }
     /**
      * Extract Tool's data from the view
      *
@@ -53988,7 +54074,8 @@ var Table = /*#__PURE__*/function () {
 
       return {
         head: tableHeadData,
-        content: data
+        content: data,
+        fontSize: this.data['fontSize']
       };
     }
     /**
